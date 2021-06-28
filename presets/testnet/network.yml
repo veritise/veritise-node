@@ -1,78 +1,150 @@
-initialCurrencyAtomicUnits: 1000000000000000
-maxMosaicAtomicUnits: 100000000000000000
-totalChainImportance: 1000000000000000
+initialCurrencyAtomicUnits: 300000000000000
+maxMosaicAtomicUnits: 1000000000000000
+totalChainImportance: 300000000000000
 minHarvesterBalance: 10000000000
-maxHarvesterBalance: 1000000000000000
-minVoterBalance: 100000000000000
+maxHarvesterBalance: 100000000000000
+minVoterBalance: 100000000000
 networkType: 104
-minNamespaceDuration: 60d
+minNamespaceDuration: 1m
 assemblies: 'api, dual, peer'
 harvestBeneficiaryPercentage: 15
 batchVerificationRandomSource: /dev/urandom
-currencyMosaicId: 7831128EAA6516FC
-harvestingMosaicId: 7831128EAA6516FC
-baseNamespace: twix
+currencyMosaicId: 5ABC5FC919933DC6
+harvestingMosaicId: 5ABC5FC919933DC6
+baseNamespace: veritise
 votingSetGrouping: 1440
-maxSecretLockDuration: 365d
-maxNamespaceDuration: 730d
-namespaceGracePeriodDuration: 60d
-blockGenerationTargetTime: 30s
-nemesisGenerationHashSeed: 9249D4D090E32363E1817F737EDDE828184CFA95DA084A94C6CD59053CDDB19E
-nemesisSignerPublicKey: A632F899F609B96FCE5B6954E5D4A768D30C41EAA97962E509883FCC2E7AD5AC
-sinkAddress: NAOJ3CGGRY7PEPWEF3VKTCXZFWMROL3ZT7LPOJA
-harvestNetworkFeeSinkAddress: NB4PLU35H5FYRS2R3SOSFIOH3NQB5A3EW6H4NRA
-mosaicRentalFeeSinkAddress: ND57MF36EK7EVMIL3DYGQLDAXT6G6SHMRHLP7MI
-namespaceRentalFeeSinkAddress: NCQK5IGKFIP4AMDJPXBWWSORCFHGU5LGZNA6CEI
+maxSecretLockDuration: 30d
+maxNamespaceDuration: 3650d
+namespaceGracePeriodDuration: 30d
+blockGenerationTargetTime: 15s
+nemesisGenerationHashSeed: 9D5307FE6CC482B2E0538F7E4897132973DFE2D4819AF9140F60C21DF2B18550
+nemesisSignerPublicKey: 530FBAAD896659E37BB7F0A3EC8D89BBDC0B09AA747B176A6D4CB68916E56DDE
+sinkAddress: NCG7VPRMPVLBQLVLFDAWYLTUWUWZ2OY7TPYUOPI
+harvestNetworkFeeSinkAddress: NAI7TSVXW64I5F2UIONYRBON2KZMT34WFQNMLHI
+mosaicRentalFeeSinkAddress: NAVNBFSQPCHT5TCWFPB6MWGQCA3NHPQBL5Q62SQ
+namespaceRentalFeeSinkAddress: NCG7VPRMPVLBQLVLFDAWYLTUWUWZ2OY7TPYUOPI
 faucetUrl: ''
 symbolServerToolsImage: symbolplatform/symbol-server:tools-gcc-1.0.0.0
 symbolServerImage: symbolplatform/symbol-server:gcc-1.0.0.0
+symbolRestImage: symbolplatform/symbol-rest:2.3.5
 minPartnerNodeVersion: 1.0.0.0
 maxPartnerNodeVersion: 1.0.255.255
 serverVersion: 1.0.0.0
 knownRestGateways:
-    - 'http://URL:3000'
-    - 'http://URL:3000'
+    - 'http://51.116.226.0:3000'
+    - 'http://51.116.226.65:3000'
+    - 'http://51.116.227.224:3000'
 
 trustedHosts:
 inflation:
-    starting-at-height-1: 100000000
-    starting-at-height-800000000: 0
+    starting-at-height-1: 100000
+    starting-at-height-40430: 100000
+    starting-at-height-161280: 150000
+    starting-at-height-282240: 250000
+    starting-at-height-403200: 500000
+    starting-at-height-524160: 1600000
+    starting-at-height-645120: 1600000
+    starting-at-height-766080: 1600000
+    starting-at-height-887040: 1600000
+    starting-at-height-1008000: 1600000
+    starting-at-height-1128960: 1600000
+    starting-at-height-1249920: 1600000
+    starting-at-height-1370880: 1600000
+    starting-at-height-1491840: 1600000
+    starting-at-height-1612800: 1600000
+    starting-at-height-1733760: 1600000
+    starting-at-height-1854720: 1600000
+    starting-at-height-1975680: 1600000
+    starting-at-height-2096640: 1600000
+    starting-at-height-2217600: 1600000
+    starting-at-height-2338560: 1600000
+    starting-at-height-2459520: 1600000
+    starting-at-height-2580480: 1600000
+    starting-at-height-2701440: 1600000
+    starting-at-height-2822400: 1600000
+    starting-at-height-2943360: 1600000
+    starting-at-height-3064320: 1600000
+    starting-at-height-3185280: 1600000
+    starting-at-height-3306240: 1600000
+    starting-at-height-3427200: 1600000
+    starting-at-height-3548160: 1600000
+    starting-at-height-3669120: 1600000
+    starting-at-height-3790080: 1600000
+    starting-at-height-3911040: 1600000
+    starting-at-height-4032000: 1600000
+    starting-at-height-4193280: 1600000
+    starting-at-height-213010560: 0
 knownPeers:
     api-node:
-        - publicKey: 340863d0434abc7c15cc3ef8c9e01d3478f10481d0f30f32d86b4320eeb2b541
+        - publicKey: c3855583554ccfa8d859652108013786ab1580436348b86c001978c74ec8b7df
           endpoint:
-              host: URL
+              host: 51.116.226.0
               port: 7900
           metadata:
               name: veritise-dual1
               roles: Api,Peer,Voting
-        - publicKey: bd04709b3ebf7525fee2a2c45c066a52b4bf44f3244fafbf5703ee1a5d0c0423
+        - publicKey: 5cd56dfeed07d92d3157a574115818193cbd1397431fdc21a1f6d5c20686b149
           endpoint:
-              host: URL
+              host: 51.116.226.65
               port: 7900
           metadata:
               name: veritise-dual2
               roles: Api,Peer,Voting
-    peer-node:
-        - publicKey: fda4ddeab86bbfa4262afa81850c5f2a2c41e55c5fafa90ddbb32a6c5ea425e2
+        - publicKey: c23e43df7269fd9613a22027692fa875b44b5ee0579a892e962475d31a3c5dbe
           endpoint:
-              host: URL
+              host: 51.116.227.224
+              port: 7900
+          metadata:
+              name: veritise-dual3
+              roles: Api,Peer,Voting
+    peer-node:
+        - publicKey: 75173f1cfd23ec4bbf85c83ea1cdb53028f229bdd84ca9197e6743cf70d588d8
+          endpoint:
+              host: 51.116.117.9
               port: 7900
           metadata:
               name: veritise-peer1
               roles: Peer,Voting
-        - publicKey: 340863d0434abc7c15cc3ef8c9e01d3478f10481d0f30f32d86b4320eeb2b541
+        - publicKey: bd352d36c9703cfefdb1fe5172a89aea5bb73aa7274b775db367e31fbd90b6fa
           endpoint:
-              host: URL
+              host: 51.116.117.80
+              port: 7900
+          metadata:
+              name: veritise-peer2
+              roles: Peer,Voting
+        - publicKey: a69d0c3716c3901d7948bef2b9eef51b31ce68d9e5bdd50743c3633ea3a4a319
+          endpoint:
+              host: 51.116.117.7
+              port: 7900
+          metadata:
+              name: veritise-peer3
+              roles: Peer,Voting
+        - publicKey: d9c0546d3db43b914664ef105b64e89e3c902435925450f70a9f9ad9b970eda8
+          endpoint:
+              host: 20.52.242.29
+              port: 7900
+          metadata:
+              name: veritise-peer4
+              roles: Peer,Voting
+        - publicKey: c3855583554ccfa8d859652108013786ab1580436348b86c001978c74ec8b7df
+          endpoint:
+              host: 51.116.226.0
               port: 7900
           metadata:
               name: veritise-dual1
               roles: Api,Peer,Voting
-        - publicKey: bd04709b3ebf7525fee2a2c45c066a52b4bf44f3244fafbf5703ee1a5d0c0423
+        - publicKey: 5cd56dfeed07d92d3157a574115818193cbd1397431fdc21a1f6d5c20686b149
           endpoint:
-              host: URL
+              host: 51.116.226.65
               port: 7900
           metadata:
               name: veritise-dual2
+              roles: Api,Peer,Voting
+        - publicKey: c23e43df7269fd9613a22027692fa875b44b5ee0579a892e962475d31a3c5dbe
+          endpoint:
+              host: 51.116.227.224
+              port: 7900
+          metadata:
+              name: veritise-dual3
               roles: Api,Peer,Voting
 

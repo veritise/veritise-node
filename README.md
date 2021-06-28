@@ -1,6 +1,6 @@
 # veritise-node
 
-Tool that allows you creating, configuring and running veritise&#39;s complete networks or nodes to be sync with existing networks.
+Tool that allows you creating, configuring and running Veritise&#39;s complete networks or nodes to be sync with existing networks.
 
 
 <!-- toc -->
@@ -207,7 +207,7 @@ veritise-node compose
 veritise-node run -d
 ```
 
-NOTE: Please open 7900 and 3000 for communication with network
+IMPORTANT: Please open 7900 and 3000 for communication with network
 
 If you need to start fresh, you many need to sudo remove the target folder (docker volumes dirs may be created using sudo). Example:
 
@@ -243,7 +243,7 @@ In case the node can't find any node to transmit transactio, you may set an exte
 
 
 ```
-veritise-node link --url=http://node0.veritise.superhow.net
+veritise-node link --url=http://51.116.226.0:3000
 ```
 
 

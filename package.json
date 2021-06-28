@@ -1,8 +1,8 @@
 {
     "name": "veritise-node",
-    "description": "veritise tool that allows you creating, configuring and running veritise's networks",
+    "description": "Veritise tool that allows you creating, configuring and running veritise's networks",
     "version": "1.0.4",
-    "author": "Fernando Boucquez <fboucquez@gmail.com>, SUPERHOW? <info@superhow.io>",
+    "author": "Veritise <info@vertise.io>, Fernando Boucquez <fboucquez@gmail.com>",
     "bin": {
         "veritise-node": "bin/run"
     },

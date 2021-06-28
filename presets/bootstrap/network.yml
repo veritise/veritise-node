@@ -5,9 +5,9 @@ minHarvesterBalance: 500
 maxHarvesterBalance: 9000000000000000
 networkType: 152
 minVoterBalance: 2000
-baseNamespace: 'veritise'
-currencyName: 'currency'
-harvestingName: 'currency'
+baseNamespace: 'test'
+currencyName: 'test'
+harvestingName: 'test'
 explorerUrl: http://localhost:90/
 faucetUrl: http://localhost:100/
 beneficiaryAddress: ''
