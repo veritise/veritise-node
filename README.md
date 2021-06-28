@@ -202,7 +202,7 @@ USAGE
 The general usage would be:
 
 ```
-veritise-node config -p testnet -a dual --customPreset name.yml
+veritise-node config -p mainnet -a dual --customPreset name.yml
 veritise-node compose
 veritise-node run -d
 ```
@@ -239,7 +239,7 @@ Once the node is running with veritise-node start and you have funded its accoun
 veritise-node link
 ```
 
-In case the node can't find any node to transmit transactio, you may set an external URL:
+In case the node can't find any node to transmit transaction, you may set an external URL:
 
 
 ```
