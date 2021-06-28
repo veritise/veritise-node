@@ -1,5 +1,5 @@
 `veritise-node resetData`
-============================
+=========================
 
 It removes the data keeping the generated configuration, certificates, keys and block 1.
 
@@ -21,4 +21,4 @@ EXAMPLE
   $ veritise-node resetData
 ```
 
-_See code: [src/commands/resetData.ts](https://github.com/veritise/veritise-node/src/commands/resetData.ts)_
+_See code: [src/commands/resetData.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/resetData.ts)_

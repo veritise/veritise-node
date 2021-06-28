@@ -1,5 +1,5 @@
 `veritise-node report`
-=========================
+======================
 
 it generates reStructuredText (.rst) reports describing the configuration of each node.
 
@@ -21,4 +21,4 @@ EXAMPLE
   $ veritise-node report
 ```
 
-_See code: [src/commands/report.ts](https://github.com/veritise/veritise-node/src/commands/report.ts)_
+_See code: [src/commands/report.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/report.ts)_

@@ -1,5 +1,5 @@
 `veritise-node stop`
-=======================
+====================
 
 It stops the docker-compose network if running (veritise-node started with --detached). This is just a wrapper for the `docker-compose down` bash call.
 
@@ -21,4 +21,4 @@ EXAMPLE
   $ veritise-node stop
 ```
 
-_See code: [src/commands/stop.ts](https://github.com/veritise/veritise-node/src/commands/stop.ts)_
+_See code: [src/commands/stop.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/stop.ts)_

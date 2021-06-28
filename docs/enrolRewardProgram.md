@@ -1,5 +1,5 @@
 `veritise-node enrolRewardProgram`
-=====================================
+==================================
 
 It enrols the nodes in the rewards program by announcing the enrol transaction to the registration address.  You can also use this command to update the program registration when you change the node public key or server host.
 
@@ -47,4 +47,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node enrolRewardProgram --url http://external-rest:3000
 ```
 
-_See code: [src/commands/enrolRewardProgram.ts](https://github.com/veritise/veritise-node/src/commands/enrolRewardProgram.ts)_
+_See code: [src/commands/enrolRewardProgram.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/enrolRewardProgram.ts)_

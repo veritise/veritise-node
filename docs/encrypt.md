@@ -1,5 +1,5 @@
 `veritise-node encrypt`
-==========================
+=======================
 
 It encrypts a yml file using the provided password. The source files would be a custom preset file, a preset.yml file or an addresses.yml.
 
@@ -46,4 +46,4 @@ EXAMPLES
   encrypted-custom-preset.yml
 ```
 
-_See code: [src/commands/encrypt.ts](https://github.com/veritise/veritise-node/src/commands/encrypt.ts)_
+_See code: [src/commands/encrypt.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/encrypt.ts)_

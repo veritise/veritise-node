@@ -1,5 +1,5 @@
 `veritise-node clean`
-========================
+=====================
 
 It removes the target folder deleting the generated configuration and data
 
@@ -21,4 +21,4 @@ EXAMPLE
   $ veritise-node clean
 ```
 
-_See code: [src/commands/clean.ts](https://github.com/veritise/veritise-node/blob/main/src/commands/clean.ts)_
+_See code: [src/commands/clean.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/clean.ts)_

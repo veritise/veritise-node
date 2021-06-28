@@ -1,5 +1,5 @@
 `veritise-node autocomplete`
-===============================
+============================
 
 display autocomplete installation instructions
 

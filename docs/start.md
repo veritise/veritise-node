@@ -1,5 +1,5 @@
 `veritise-node start`
-========================
+=====================
 
 Single command that aggregates config, compose and run in one line!
 
@@ -89,4 +89,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node start -p testnet -a dual
 ```
 
-_See code: [src/commands/start.ts](https://github.com/veritise/veritise-node/src/commands/start.ts)_
+_See code: [src/commands/start.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/start.ts)_

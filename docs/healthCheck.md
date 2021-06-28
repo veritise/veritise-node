@@ -1,5 +1,5 @@
 `veritise-node healthCheck`
-==============================
+===========================
 
 It checks if the services created with docker compose are up and running.
 
@@ -36,4 +36,4 @@ EXAMPLE
   $ veritise-node healthCheck
 ```
 
-_See code: [src/commands/healthCheck.ts](https://github.com/veritise/veritise-node/src/commands/healthCheck.ts)_
+_See code: [src/commands/healthCheck.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/healthCheck.ts)_

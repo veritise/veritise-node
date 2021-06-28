@@ -86,7 +86,7 @@
             "@oclif/plugin-help"
         ]
     },
-    "repository": "@veritise/veritise-node",
+    "repository": "veritise/veritise-node",
     "scripts": {
         "doc": "typedoc --out \"ts-docs\" src && touch ./ts-docs/.nojekyll",
         "lint": "eslint --cache src/ test/ --ext .ts",

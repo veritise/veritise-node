@@ -1,5 +1,5 @@
 `veritise-node decrypt`
-==========================
+=======================
 
 It decrypts a yml file using the provided password. The source file can be a custom preset file, a preset.yml file or an addresses.yml.
 
@@ -52,8 +52,7 @@ EXAMPLES
   $ rm plain-addresses.yml
   $ rm plain-custom-preset.yml
 
-  $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node decrypt --source target/addresses.yml --destination 
-  plain-addresses.yml
+  $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node decrypt --source target/addresses.yml --destination plain-addresses.yml
 ```
 
-_See code: [src/commands/decrypt.ts](https://github.com/veritise/veritise-node/src/commands/decrypt.ts)_
+_See code: [src/commands/decrypt.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/decrypt.ts)_

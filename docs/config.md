@@ -1,5 +1,5 @@
 `veritise-node config`
-=========================
+======================
 
 Command used to set up the configuration files and the nemesis block for the current network
 
@@ -57,4 +57,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node config -p testnet -a dual
 ```
 
-_See code: [src/commands/config.ts](https://github.com/veritise/veritise-node/blob/v1.0.3/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/config.ts)_

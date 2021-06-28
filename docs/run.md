@@ -1,5 +1,5 @@
 `veritise-node run`
-======================
+===================
 
 It boots the network via docker using the generated `docker-compose.yml` file and configuration. The config and compose methods/commands need to be called before this method. This is just a wrapper for the `docker-compose up` bash call.
 
@@ -53,4 +53,4 @@ EXAMPLE
   $ veritise-node run
 ```
 
-_See code: [src/commands/run.ts](https://github.com/veritise/veritise-node/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/run.ts)_

@@ -7,11 +7,13 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 * [veritise-node](#veritise-node)
 * [Key benefits:](#key-benefits)
 * [Concepts](#concepts)
+* [Intro](#intro)
 * [Requirements](#requirements)
+* [Step-by-step](#step-by-step)
 * [Usage](#usage)
+* [Enabling harvesting](#enabling-harvesting)
 * [E2E Testing support](#e2e-testing-support)
 * [Development](#development)
-* [Commands](#commands)
 * [Command Topics](#command-topics)
 <!-- tocstop -->
 
@@ -187,11 +189,11 @@ Once in the working dir:
 
 <!-- usage -->
 ```sh-session
-$ npm install -g veritise-node
+$ npm install -g @vertise/veritise-node
 $ veritise-node COMMAND
 running command...
 $ veritise-node (-v|--version|version)
-veritise-node/1.0.4 linux-x64 node-v10.24.0
+@vertise/veritise-node/1.0.4 win32-x64 node-v12.19.0
 $ veritise-node --help [COMMAND]
 USAGE
   $ veritise-node COMMAND
@@ -364,5 +366,3 @@ General users should install this tool like any other node module.
 * [`veritise-node stop`](docs/stop.md) - It stops the docker-compose network if running (veritise-node started with --detached). This is just a wrapper for the `docker-compose down` bash call.
 
 <!-- commandsstop -->
-
-

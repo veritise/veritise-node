@@ -1,5 +1,5 @@
 `veritise-node link`
-=======================
+====================
 
 It announces VRF and Voting Link transactions to the network for each node with 'Peer' or 'Voting' roles. This command finalizes the node registration to an existing network.
 
@@ -41,4 +41,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node link --unlink --useKnownRestGateways
 ```
 
-_See code: [src/commands/link.ts](https://github.com/veritise/veritise-node/src/commands/link.ts)_
+_See code: [src/commands/link.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/link.ts)_
