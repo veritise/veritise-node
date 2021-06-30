@@ -49,14 +49,6 @@ Presets are defined at 4 levels from general to specific:
 
 Properties in each file override the previous values (by object deep merge).
 
-### Out-of-the-box presets:
-
--   `-p bootstrap`: Default [preset](https://github.com/veritise/veritise-node/blob/main/presets/bootstrap/network.yml). It's a private network with 1 mongo database, 2 peers, 1 api and 1 rest gateway. Nemesis block is generated.
--   `-p bootstrap -a light`: A [light](https://github.com/veritise/veritise-node/blob/main/presets/bootstrap/assembly-light.yml) network. It's a version of bootstrap preset with 1 mongo database, 1 dual peer and 1 rest gateway. Nemesis block is generated.
--   `-p bootstrap -a full`: A [full](https://github.com/veritise/veritise-node/blob/main/presets/bootstrap/assembly-full.yml) network. The default bootstrap preset plus 1 wallet, 1 explorer and 1 faucet. Great for demonstration purposes. Nemesis block is generated.
--   `-p testnet -a peer`: A [harvesting](https://github.com/veritise/veritise-node/blob/main/presets/testnet/assembly-peer.yml) peer node that connects to the current public [testnet](https://github.com/veritise/veritise-node/blob/main/presets/testnet/network.yml). [Nemesis block](https://github.com/veritise/veritise-node/tree/main/presets/testnet/seed/00000) is copied over.
--   `-p testnet -a api`: A [api](https://github.com/veritise/veritise-node/blob/main/presets/testnet/assembly-api.yml) peer node that connects to the current public [testnet](https://github.com/veritise/veritise-node/blob/main/presets/testnet/network.yml) running its own mongo database and rest gateway. [Nemesis block](https://github.com/veritise/veritise-node/tree/main/presets/testnet/seed/00000) is copied over.
--   `-p testnet -a dual`: A [dual](https://github.com/veritise/veritise-node/blob/main/presets/testnet/assembly-dual.yml) haversting peer node that connects to the current public [testnet](https://github.com/veritise/veritise-node/blob/main/presets/testnet/network.yml) running its own mongo database and rest gateway. [Nemesis block](https://github.com/veritise/veritise-node/tree/main/presets/testnet/seed/00000) is copied over.
 
 ### Custom preset:
 
