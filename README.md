@@ -174,6 +174,8 @@ cd ~/node`
 echo "nodes:
   -
     friendlyName: 'REPLACE_NODE_NAME_HERE'
+    minFeeMultiplier: 10
+    maxTrackedNodes: 5000
 " > name.yml
 ```
 
