@@ -164,11 +164,11 @@ mkdir node
 cd node
 ```
 
-Create node custom name:
+Create node custom preset file:
 
-```
-cd ~/node`
-```
+- `friendlyName` - node friendly name (leave empty to use address)
+- `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks
+- `maxTrackedNodes` - number of nodes to track in memory
 
 ```
 echo "nodes:
