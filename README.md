@@ -164,16 +164,18 @@ mkdir node
 cd node
 ```
 
-Create node custom name:
+Create node custom preset file:
 
-```
-cd ~/node`
-```
+- `friendlyName` - node friendly name (leave empty to use address)
+- `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks
+- `maxTrackedNodes` - number of nodes to track in memory
 
 ```
 echo "nodes:
   -
     friendlyName: 'REPLACE_NODE_NAME_HERE'
+    minFeeMultiplier: 10
+    maxTrackedNodes: 5000
 " > name.yml
 ```
 
