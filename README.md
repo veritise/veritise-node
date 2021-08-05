@@ -166,9 +166,11 @@ cd node
 
 Create node custom preset file:
 
-- `friendlyName` - node friendly name (leave empty to use address)
-- `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks
-- `maxTrackedNodes` - number of nodes to track in memory
+- `friendlyName` - node friendly name (leave empty to use address).
+- `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks.
+- `maxTrackedNodes` - number of nodes to track in memory.
+- `harvestBeneficiaryPercentage` - percentage of the harvested fee that is collected by the beneficiary account.
+- `harvestNetworkPercentage` - percentage of the harvested fee that is collected by the network.
 
 ```
 echo "nodes:
@@ -176,6 +178,8 @@ echo "nodes:
     friendlyName: 'REPLACE_NODE_NAME_HERE'
     minFeeMultiplier: 10
     maxTrackedNodes: 5000
+    harvestBeneficiaryPercentage: 20
+    harvestNetworkPercentage: 40
 " > name.yml
 ```
 
