@@ -1,5 +1,5 @@
 {
-    "name": "@vertise/veritise-node",
+    "name": "@veritise/veritise-node",
     "description": "Veritise tool that allows you creating, configuring and running veritise's networks",
     "version": "1.0.4",
     "author": "Veritise <info@vertise.io>, Fernando Boucquez <fboucquez@gmail.com>",

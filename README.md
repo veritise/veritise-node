@@ -12,8 +12,6 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 * [Step-by-step](#step-by-step)
 * [Usage](#usage)
 * [Enabling harvesting](#enabling-harvesting)
-* [E2E Testing support](#e2e-testing-support)
-* [Development](#development)
 * [Command Topics](#command-topics)
 <!-- tocstop -->
 
@@ -25,14 +23,13 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 -   The configuration is parametrized via CLI commands and presets instead of by changing properties files.
 -   The tools code is unique for any type of network, new networks or nodes in a network. It doesn't need to be copied and pasted in different projects or assemblies.
 -   The config command runs on the host machine, not via docker making it easier to debug or tune
--   It's uses the TS SDK for key generation, vrf transactions, address generation instead of using catapult-tools (nemgen is still used to generate the nemesis block).
+-   It's uses the TS SDK for key generation, vrf transactions, address generation.
 -   Easier to maintain, the properties files are reused for all nodes, assemblies and network types.
 -   Network setup (how many database, nodes, rest gateways to run) is defined in presets, users can provide their own ones.
 -   Docker-compose yaml files are generated based on the network setup/preset instead of being manually created/upgraded.
 -   The created network (config, nemesis and docker-compose) can be zipped and distributed for other host machines to run it.
 -   The used docker images versions can be changed via configuration/preset
--   It uses the [oclif](https://oclif.io) framework. New commands are easy to add and document.
--   It can be included as a npm dependency for clients' e2e testing.
+-   It uses the [oclif](https://oclif.io) framework. New commands are easy to add and document. d
 
 # Concepts
 
@@ -43,7 +40,7 @@ Yaml files that define the configuration and layout of the network and nodes. It
 Presets are defined at 4 levels from general to specific:
 
 -   Shared: Default configurations for all the networks.
--   Network: It defines the main preset of a given network, example: `bootstrap` or `testnet`.
+-   Network: It defines the main preset of a given network, example: `mainnet` or `testnet`.
 -   Assembly: It defines a modification of a network, example: `testnet peer`, `tesnet dual`, `testnet api`. Assembly is required for some networks (like `testnet`).
 -   Custom: A user provided yml file (`--customPreset` param) that could override some or all properties in the out-of-the-box presets.
 
@@ -136,22 +133,11 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 
 Try to logout and login, or please follow this [guide](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket).
 
-Get veritise Node:
+Get veritise-node:
 
 ```
-cd /home/powerusername
-git clone https://github.com/veritise/veritise-node.git
+npm install -g @veritise/veritise-node
 ```
-
-Install veritise node
-
-```
-cd veritise-node
-npm i
-npm install -g
-cd ..
-```
-Logout and Login
 
 # Usage
 
@@ -170,6 +156,9 @@ Create node custom preset file:
 - `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks
 - `maxTrackedNodes` - number of nodes to track in memory
 
+
+<b>NOTE:</b> friendlyName will be displayed in Veritise explorer node list
+
 ```
 echo "nodes:
   -
@@ -178,38 +167,35 @@ echo "nodes:
     maxTrackedNodes: 5000
 " > name.yml
 ```
+ 
 
-Once in the working dir:
+To deploy Veritise node you need to execute these commmand:
 
-<!-- usage -->
-```sh-session
-$ npm install -g @vertise/veritise-node
-$ veritise-node COMMAND
-running command...
-$ veritise-node (-v|--version|version)
-@vertise/veritise-node/1.0.4 win32-x64 node-v12.19.0
-$ veritise-node --help [COMMAND]
-USAGE
-  $ veritise-node COMMAND
-...
-```
-<!-- usagestop -->
-
-The general usage would be:
+<b>IMPORTANT: Before this step, please open 7900 and 3000 ports for communication with the network</b>
 
 ```
-veritise-node config -p mainnet -a dual --customPreset name.yml
+veritise-node start -p mainnet -a dual --customPreset name.yml -d
+```
+<b>OR</b>
+```
+veritise-node comfig -p mainnet -a dual --customPreset name.yml
 veritise-node compose
 veritise-node run -d
 ```
 
-IMPORTANT: Please open 7900 and 3000 for communication with network
+Please wait until you node will be fully synched with Veritise network. After few minutes check node health:
 
-If you need to start fresh, you many need to sudo remove the target folder (docker volumes dirs may be created using sudo). Example:
+```
+curl http://localhost:3000/node/health
+```
+
+
+<i>If you need to start fresh, you many need to sudo remove the target folder (docker volumes dirs may be created using sudo). Example:
 
 ```
 sudo rm -rf ./target
 ```
+</i>
 
 # Enabling harvesting
 
@@ -241,102 +227,6 @@ In case the node can't find any node to transmit transaction, you may set an ext
 ```
 veritise-node link --url=http://51.116.226.0:3000
 ```
-
-
-# E2E Testing support
-
-One use case of this CLI is client E2E testing support. If you are coding a veritise-node client, you (Travis or Jenkins) can run e2e tests like:
-
-```
-veritise-node start -p bootstrap --detached
-YOUR TEST (e.g: npm run test, gradle test, selenium etc.)
-veritise-node stop
-```
-
-`--detached` starts the server waiting until it is up (by polling the network http://localhost:3000/node/health). The command will fail if the components are not up in 30 seconds.
-
-You can also provide your own custom preset (`-c`) if you want your e2e test to start with a specific state (specific balances addresses, mosaics, namespaces, generation hash seed, etc.)
-
-## Node client E2E via CLI:
-
-The CLI can also be used as npm project (dev) dependency (`npm install --save-dev veritise-node`). Then you can integrate the network to your npm test cycle.
-Your `package.json` can look like this:
-
-```yaml
-
-"devDependencies": {
-    ....
-    "veritise-node": "0.0.x",
-    ....
-}
-
-scripts": {
-...
-    "clean-network": "veritise-node clean",
-    "run-network": "veritise-node start -c ./output/my_custom_preset.yml --detached --healthCheck",
-    "run-stop": "veritise-node stop",
-    "integration-test": "....some mocha/jest/etc tests running against localhost:3000 network....",
-    "e2e": "npm run clean-network && npm run run-network && npm run integration-test && npm run stop-network",
-...
-}
-```
-
-Then, you, Jenkins, Travis or your CI tool can run;
-
-```
-npm run e2e
-```
-
-## Node client E2E via API:
-
-Alternatively, you can use the [BootstrapService](https://github.com/veritise/veritise-node/blob/main/src/service/BootstrapService.ts) facade to programmatically start and stop a server.
-
-Example:
-
-```ts
-import {BootstrapService, StartParams, Preset} from 'veritise-node'; 
-import {expect} from '@oclif/test'; 
-
-it('Bootstrap e2e test', async () => {
-    const service = new BootstrapService();
-    const config: StartParams = {
-        preset: Preset.bootstrap,
-        reset: true,
-        healthCheck: true,
-        timeout: 60000 * 5,
-        target: 'target/bootstrap-test',
-        detached: true,
-        user: 'current',
-    };
-    try {
-        await service.stop(config);
-        const configResult = await service.start(config);
-        expect(configResult.presetData).not.null;
-        expect(configResult.addresses).not.null;
-        // Here you can write unit tests against a http://localhost:3000 network
-    } finally {
-        await service.stop(config);
-    }
-});
-```
-
-It's recommended to reuse the same server for multiple tests by using `beforeAll`, `afterAll` kind of statements.
-
-# Development
-
-If you want to contribute to this tool, clone this repo and run:
-
-```
-npm i
-npm install -g
-```
-
-Then, `veritise-node` runs from the source code. You can now try your features after changing the code.
-
-Pull Requests are appreciated! Please follow the contributing [guidelines](CONTRIBUTING.md).
-
-Note: cloning this repo is only for people that want to tune the tool in a way it cannot be configured. If this is your case, please provide a feature request.
-General users should install this tool like any other node module.
 
 
 
