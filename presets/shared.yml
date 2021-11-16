@@ -85,7 +85,6 @@ votingKeysDirectory: ./votingkeys
 enableDelegatedHarvestersAutoDetection: true
 catapultAppFolder: /usr/catapult
 rewardProgramAgentPort: 7881
-enableRevoteOnBoot: true
 totalVotingBalanceCalculationFix: 0
 
 # config database
