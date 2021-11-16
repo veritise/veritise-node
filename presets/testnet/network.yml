@@ -9,11 +9,11 @@ minNamespaceDuration: 1m
 assemblies: 'api, dual, peer'
 harvestBeneficiaryPercentage: 15
 batchVerificationRandomSource: /dev/urandom
-currencyMosaicId: 5ABC5FC919933DC6
-harvestingMosaicId: 5ABC5FC919933DC6
+currencyMosaicId: 18CC3B0273EF8B7C
+harvestingMosaicId: 18CC3B0273EF8B7C
 currencyName: currency
 harvestingName: currency
-epochAdjustment: 1616694977s
+epochAdjustment: 1620136098s
 baseNamespace: veritise
 votingSetGrouping: 1440
 maxSecretLockDuration: 30d
