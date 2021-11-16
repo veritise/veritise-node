@@ -64,13 +64,12 @@ maxNameSize: 128
 maxChildNamespaces: 500
 maxNamespaceDepth: 3
 batchVerificationRandomSource:
-symbolServerToolsImage: symbolplatform/symbol-server:tools-gcc-1.0.0.0
-symbolServerImage: symbolplatform/symbol-server:gcc-1.0.0.0
-symbolRestImage: symbolplatform/symbol-rest:2.3.5
+symbolServerImage: symbolplatform/symbol-server:gcc-10-1.0.2.0
+symbolRestImage: symbolplatform/symbol-rest:2.3.6
 symbolExplorerImage: symbolplatform/symbol-explorer:0.6.3-alpha
 symbolWalletImage: symbolplatform/symbol-desktop-wallet:1.0.1
 symbolFaucetImage: symbolplatform/symbol-faucet:0.5.0-alpha
-symbolAgentImage: symbolplatform/symbol-node-rewards-agent:1.0.2-alpha.0
+symbolAgentImage: symbolplatform/symbol-node-rewards-agent:2.0.0
 mongoImage: mongo:4.4.3-bionic
 mongoComposeRunParam: --wiredTigerCacheSizeGB 2
 logLevel: 'Info'
@@ -81,10 +80,13 @@ transactionsDirectory: './transactions'
 binDirectory: ./seed
 seedDirectory: ./seed
 certificateDirectory: ./cert
-dataDirectory: ./seed
+dataDirectory: ./data
 votingKeysDirectory: ./votingkeys
 enableDelegatedHarvestersAutoDetection: true
 catapultAppFolder: /usr/catapult
+rewardProgramAgentPort: 7881
+enableRevoteOnBoot: true
+totalVotingBalanceCalculationFix: 0
 
 # config database
 databaseName: catapult
@@ -126,7 +128,6 @@ timeSynchronizationMinImportance: 3750
 maxIncomingConnectionsPerIdentity: 6
 enableAddressReuse: false
 nodeListenInterface: 0.0.0.0
-serverVersion: 1.0.0.0
 enableTransactionSpamThrottling: true
 transactionSpamThrottlingMaxBoostFee: 10000000
 maxHashesPerSyncAttempt: 370
@@ -140,6 +141,8 @@ transactionSelectionStrategy: maximize-fee
 unconfirmedTransactionsCacheMaxResponseSize: 20MB
 unconfirmedTransactionsCacheMaxSize: 20MB
 connectTimeout: 15s
+enableSingleThreadPool: false
+sinkType: Async
 syncTimeout: 20m
 socketWorkingBufferSize: 512KB
 socketWorkingBufferSensitivity: 100
@@ -160,10 +163,9 @@ delegatePrioritizationPolicy: Importance
 dockerComposeVersion: '2.4'
 dockerComposeServiceRestart: 'on-failure:2'
 dockerComposeDebugMode: false
-
+minPartnerNodeVersion: 1.0.1.0
 maxPartnerNodeVersion: 1.0.255.255
-minPartnerNodeVersion: 1.0.0.0
-
+serverVersion: 1.0.2.0
 outgoing_connections_maxConnections: 10
 outgoing_connections_maxConnectionAge: 200
 outgoing_connections_maxConnectionBanAge: 20

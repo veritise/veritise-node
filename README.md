@@ -23,13 +23,13 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 -   The configuration is parametrized via CLI commands and presets instead of by changing properties files.
 -   The tools code is unique for any type of network, new networks or nodes in a network. It doesn't need to be copied and pasted in different projects or assemblies.
 -   The config command runs on the host machine, not via docker making it easier to debug or tune
--   It's uses the TS SDK for key generation, vrf transactions, address generation.
+-    It's uses the TS SDK for key generation, vrf transactions, address generation.
 -   Easier to maintain, the properties files are reused for all nodes, assemblies and network types.
 -   Network setup (how many database, nodes, rest gateways to run) is defined in presets, users can provide their own ones.
 -   Docker-compose yaml files are generated based on the network setup/preset instead of being manually created/upgraded.
 -   The created network (config, nemesis and docker-compose) can be zipped and distributed for other host machines to run it.
 -   The used docker images versions can be changed via configuration/preset
--   It uses the [oclif](https://oclif.io) framework. New commands are easy to add and document. d
+-    It uses the [oclif](https://oclif.io) framework. New commands are easy to add and document.
 
 # Concepts
 
@@ -167,7 +167,7 @@ echo "nodes:
     maxTrackedNodes: 5000
 " > name.yml
 ```
- 
+
 
 To deploy Veritise node you need to execute these commmand:
 
@@ -196,6 +196,10 @@ curl http://localhost:3000/node/health
 sudo rm -rf ./target
 ```
 </i>
+
+```
+sudo rm -rf ./target
+```
 
 # Enabling harvesting
 
@@ -227,8 +231,6 @@ In case the node can't find any node to transmit transaction, you may set an ext
 ```
 veritise-node link --url=http://51.116.226.0:3000
 ```
-
-
 
 <!-- commands -->
 # Command Topics

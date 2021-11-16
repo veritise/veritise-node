@@ -1,39 +1,63 @@
-initialCurrencyAtomicUnits: 300000000000000
-maxMosaicAtomicUnits: 1000000000000000
-totalChainImportance: 300000000000000
-minHarvesterBalance: 10000000000
-maxHarvesterBalance: 100000000000000
-minVoterBalance: 100000000000
-networkType: 104
-minNamespaceDuration: 1m
 assemblies: 'api, dual, peer'
-harvestBeneficiaryPercentage: 15
+baseNamespace: symbol
 batchVerificationRandomSource: /dev/urandom
-currencyMosaicId: 5ABC5FC919933DC6
-harvestingMosaicId: 5ABC5FC919933DC6
-baseNamespace: veritise
+currencyMosaicId: 6BED913FA20223F8
+currencyName: xym
+harvestBeneficiaryPercentage: 25
+harvestingName: xym
+harvestingMosaicId: 6BED913FA20223F8
+epochAdjustment: 1615853185s
+enableRevoteOnBoot: false
+maxHarvesterBalance: 50000000000000
+maxMosaicAtomicUnits: 8999999999000000
+minHarvesterBalance: 10000000000
+minVoterBalance: 3000000000000
+nemesisGenerationHashSeed: 57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6
+harvestNetworkFeeSinkAddress: NBUTOBVT5JQDCV6UEPCPFHWWOAOPOCLA5AY5FLI
+namespaceRentalFeeSinkAddress: NBDTBUD6R32ZYJWDEWLJM4YMOX3OOILHGDUMTSA
+mosaicRentalFeeSinkAddress: NC733XE7DF46Q7QYLIIZBBSCJN2BEEP5FQ6PAYA
+nemesisSignerPublicKey: BE0B4CF546B7B4F4BBFCFF9F574FDA527C07A53D3FC76F8BB7DB746F8E8E0A9F
+networkType: 104
+rewardProgramCaFile: >-
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJZVENDQVJNQ0ZHVWJMZ1FuUEU4azc2VUczNWNGME9yNWh6M1RNQVVHQXl0bGNEQlRNUm93R0FZRFZRUUsKREJGT1JVMGdSM0p2ZFhBZ1RHbHRhWFJsWkRFYk1Ca0dBMVVFQXd3U2MzbHRZbTlzY0d4aGRHWnZjbTB1WTI5dApNUmd3RmdZRFZRUUxEQTlTWlhkaGNtUnpJRkJ5YjJkeVlXMHdIaGNOTWpFd05ESTJNVFV4TlRVMFdoY05OREV3Ck5ESXhNVFV4TlRVMFdqQlRNUm93R0FZRFZRUUtEQkZPUlUwZ1IzSnZkWEFnVEdsdGFYUmxaREViTUJrR0ExVUUKQXd3U2MzbHRZbTlzY0d4aGRHWnZjbTB1WTI5dE1SZ3dGZ1lEVlFRTERBOVNaWGRoY21SeklGQnliMmR5WVcwdwpLakFGQmdNclpYQURJUUNGMEJ5NENlTTV3MWxoZWU3YVlzb0YvbEJMT29kZDI0ZWhqa3k0NnV4djREQUZCZ01yClpYQURRUURneUhSeU1zbVpCV3pFZWlDczJWMVZ1dHFaNWxzZ2tWN0w4K2dxZ3NQTmpCajRlaUpWaDdHUWV0SEcKZXlFaWZoUXFwdnpqWmQycW9MWUNrYWV3TUNRRQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+rewardProgramEnrollmentAddress: NDG2F6IHON7EDOXZCHSTSJ2YMUHDFXAQ2EUZHFA
+rewardProgramControllerApiUrl: 'http://node-monitoring.symbolblockchain.io:7890'
+totalChainImportance: 7842928625000000
+initialCurrencyAtomicUnits: 7842928625000000
+importanceGrouping: 720
 votingSetGrouping: 1440
-maxSecretLockDuration: 30d
-maxNamespaceDuration: 3650d
+minVotingKeyLifetime: 112
+maxVotingKeyLifetime: 360
+votingKeyDesiredLifetime: 360
+votingKeyDesiredFutureLifetime: 60
+lastKnownNetworkEpoch: 181
+stepDuration: 5m
+maxBlockFutureTime: 300ms
+maxAccountRestrictionValues: 100
+maxSecretLockDuration: 365d
+maxNamespaceDuration: 1825d
+minNamespaceDuration: 30d
 namespaceGracePeriodDuration: 30d
-blockGenerationTargetTime: 15s
-nemesisGenerationHashSeed: 9D5307FE6CC482B2E0538F7E4897132973DFE2D4819AF9140F60C21DF2B18550
-nemesisSignerPublicKey: 530FBAAD896659E37BB7F0A3EC8D89BBDC0B09AA747B176A6D4CB68916E56DDE
-sinkAddress: NCG7VPRMPVLBQLVLFDAWYLTUWUWZ2OY7TPYUOPI
-harvestNetworkFeeSinkAddress: NAI7TSVXW64I5F2UIONYRBON2KZMT34WFQNMLHI
-mosaicRentalFeeSinkAddress: NAVNBFSQPCHT5TCWFPB6MWGQCA3NHPQBL5Q62SQ
-namespaceRentalFeeSinkAddress: NCG7VPRMPVLBQLVLFDAWYLTUWUWZ2OY7TPYUOPI
-faucetUrl: ''
-symbolServerToolsImage: symbolplatform/symbol-server:tools-gcc-1.0.0.0
-symbolServerImage: symbolplatform/symbol-server:gcc-1.0.0.0
-symbolRestImage: symbolplatform/symbol-rest:2.3.5
-minPartnerNodeVersion: 1.0.0.0
-maxPartnerNodeVersion: 1.0.255.255
-serverVersion: 1.0.0.0
+blockGenerationTargetTime: 30s
+defaultDynamicFeeMultiplier: 100
+rootNamespaceRentalFeePerBlock: 2
+childNamespaceRentalFee: 100000
+totalVotingBalanceCalculationFix: 528000
+mosaicRentalFee: 500000
+throttlingBurst: 80
+throttlingRate: 60
+fileDatabaseBatchSize: 100
+minProofSize: 0
+syncTimeout: 5m
+maxChildNamespaces: 100
+nonVotingUnfinalizedBlocksDuration: 10m
+votingUnfinalizedBlocksDuration: 0m
+timeSynchronizationMinImportance: 10000000000
+restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer, cmc'
 knownRestGateways:
-    - 'http://51.116.226.0:3000'
-    - 'http://51.116.226.65:3000'
-    - 'http://51.116.227.224:3000'
+    - 'https://dual1.veritise.superhow.net:443'
+    - 'https://dual2.veritise.superhow.net:443'
+    - 'https://dual3.veritise.superhow.net:443'
 
 trustedHosts:
 inflation:
@@ -78,21 +102,21 @@ knownPeers:
     api-node:
         - publicKey: c3855583554ccfa8d859652108013786ab1580436348b86c001978c74ec8b7df
           endpoint:
-              host: 51.116.226.0
+              host: dual1.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-dual1
               roles: Api,Peer,Voting
         - publicKey: 5cd56dfeed07d92d3157a574115818193cbd1397431fdc21a1f6d5c20686b149
           endpoint:
-              host: 51.116.226.65
+              host: dual2.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-dual2
               roles: Api,Peer,Voting
         - publicKey: c23e43df7269fd9613a22027692fa875b44b5ee0579a892e962475d31a3c5dbe
           endpoint:
-              host: 51.116.227.224
+              host: dual3.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-dual3
@@ -147,4 +171,3 @@ knownPeers:
           metadata:
               name: veritise-dual3
               roles: Api,Peer,Voting
-
