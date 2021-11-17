@@ -4,7 +4,7 @@ totalChainImportance: 300000000000000
 minHarvesterBalance: 10000000000
 maxHarvesterBalance: 100000000000000
 minVoterBalance: 100000000000
-networkType: 104
+networkType: 152
 minNamespaceDuration: 1m
 assemblies: 'api, dual, peer'
 harvestBeneficiaryPercentage: 15
@@ -29,7 +29,7 @@ namespaceRentalFeeSinkAddress: TB7YP5ODHE3KTFCLRIMDH4FUBZU5HPB73ILGEPA
 faucetUrl: ''
 minPartnerNodeVersion: 1.0.0.0
 maxPartnerNodeVersion: 1.0.255.255
-serverVersion: 1.0.0.0
+serverVersion: 1.0.2.0
 enableRevoteOnBoot: false
 importanceGrouping: 720
 votingKeyDesiredLifetime: 720
@@ -39,16 +39,16 @@ minVotingKeyLifetime: 112
 maxVotingKeyLifetime: 360
 stepDuration: 4m
 maxBlockFutureTime: 300ms
-maxAccountRestrictionValues: 512
-defaultDynamicFeeMultiplier: 100000
+maxAccountRestrictionValues: 100
+defaultDynamicFeeMultiplier: 100
 rootNamespaceRentalFeePerBlock: 2
-mosaicRentalFee: 40
-throttlingBurst: 180
-throttlingRate: 160
-fileDatabaseBatchSize: 1
-minProofSize: 1
+mosaicRentalFee: 500000
+throttlingBurst: 80
+throttlingRate: 60
+fileDatabaseBatchSize: 100
+minProofSize: 0
 syncTimeout: 5m
-maxChildNamespaces: 500
+maxChildNamespaces: 100
 nonVotingUnfinalizedBlocksDuration: 10m
 votingUnfinalizedBlocksDuration: 0m
 timeSynchronizationMinImportance: 10000000000
