@@ -28,8 +28,6 @@ votingKeyDesiredLifetime: 360
 votingKeyDesiredFutureLifetime: 60
 lastKnownNetworkEpoch: 181
 stepDuration: 5m
-maxBlockFutureTime: 300ms
-maxAccountRestrictionValues: 100
 maxSecretLockDuration: 30d
 maxNamespaceDuration: 3650d
 minNamespaceDuration: 1m
@@ -39,16 +37,11 @@ defaultDynamicFeeMultiplier: 100
 rootNamespaceRentalFeePerBlock: 2
 childNamespaceRentalFee: 100000
 totalVotingBalanceCalculationFix: 528000
-mosaicRentalFee: 500000
 throttlingBurst: 80
 throttlingRate: 60
-fileDatabaseBatchSize: 100
 minProofSize: 0
-syncTimeout: 5m
-maxChildNamespaces: 100
 nonVotingUnfinalizedBlocksDuration: 10m
 votingUnfinalizedBlocksDuration: 0m
-timeSynchronizationMinImportance: 10000000000
 restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer, cmc'
 knownRestGateways:
     - 'https://dual1.veritise.superhow.net:443'

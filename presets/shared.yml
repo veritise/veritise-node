@@ -20,7 +20,7 @@ maxTransactionLifetime: 24h
 maxBlockFutureTime: 500ms
 maxNamespaceDuration: 3650d
 namespaceGracePeriodDuration: 30d
-maxAccountRestrictionValues: 100
+maxAccountRestrictionValues: 512
 maxMosaicRestrictionValues: 20
 maxMessageSize: 4096
 reservedRootNamespaceNames: 'veritise, vts'
@@ -90,7 +90,7 @@ totalVotingBalanceCalculationFix: 0
 # config database
 databaseName: catapult
 maxWriterThreads: 8
-maxDropBatchSize: 10
+maxDropBatchSize: 100
 writeTimeout: 10m
 
 #Peer List configuration
@@ -152,7 +152,7 @@ blockElementTraceInterval: 1
 transactionDisruptorSlotCount: 8192
 transactionDisruptorMaxMemorySize: 20MB
 transactionElementTraceInterval: 10
-enableDispatcherAbortWhenFull: false
+enableDispatcherAbortWhenFull: true
 enableDispatcherInputAuditing: false
 maxTrackedNodes: 5'000
 enableAutoHarvesting: true
