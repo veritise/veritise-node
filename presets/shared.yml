@@ -73,9 +73,9 @@ symbolAgentImage: symbolplatform/symbol-node-rewards-agent:2.0.0
 mongoImage: mongo:4.4.3-bionic
 mongoComposeRunParam: --wiredTigerCacheSizeGB 2
 logLevel: 'Debug'
-# brokerLogLevel: 'Info'
-# recoveryLogLevel: 'Info'
-# serverLogLevel: 'Info'
+brokerLogLevel: 'Debug'
+recoveryLogLevel: 'Debug'
+serverLogLevel: 'Debug'
 transactionsDirectory: './transactions'
 binDirectory: ./seed
 seedDirectory: ./seed
