@@ -36,8 +36,6 @@ votingKeyDesiredFutureLifetime: 120
 lastKnownNetworkEpoch: 235
 minVotingKeyLifetime: 112
 maxVotingKeyLifetime: 360
-defaultDynamicFeeMultiplier: 1000000
-rootNamespaceRentalFeePerBlock: 2
 totalVotingBalanceCalculationFix: 557540
 throttlingBurst: 80
 throttlingRate: 60
