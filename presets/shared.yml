@@ -112,7 +112,7 @@ subscriberPort: 7902
 messagingListenInterface: 0.0.0.0
 
 # network height
-networkheight: true
+networkheight: false
 networkHeightMaxNodes: 5
 
 # partialtransactions
