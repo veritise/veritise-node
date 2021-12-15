@@ -1,8 +1,8 @@
 {
     "name": "@veritise/veritise-node",
-    "description": "Veritise tool that allows you creating, configuring and running veritise's networks",
+    "description": "Veritise tool that allows you creating, configuring and running Veritise's networks",
     "version": "1.0.9",
-    "author": "Veritise <info@vertise.io>, Fernando Boucquez <fboucquez@gmail.com>",
+    "author": "Veritise <info@veritise.io>, Fernando Boucquez <fboucquez@gmail.com>",
     "bin": {
         "veritise-node": "bin/run"
     },
