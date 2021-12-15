@@ -12,6 +12,7 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 * [Step-by-step](#step-by-step)
 * [Usage](#usage)
 * [Enabling harvesting](#enabling-harvesting)
+* [Remove Node](#remove-node)
 * [Command Topics](#command-topics)
 <!-- tocstop -->
 
@@ -80,11 +81,14 @@ cd
 
 # Requirements
 
--   Node 10+
+-   Node 12
 -   Docker
 -   Docker Compose 1.29+ (better to use https://docs.docker.com/engine/install/ubuntu/)
+> <b>IMPORTANT: Please open `7900` and `3000` ports for communication with the network</b>
 
 # Step-by-step
+
+
 
 You may need NVM to manage node version
 
@@ -141,7 +145,7 @@ npm install -g @veritise/veritise-node
 
 # Usage
 
-It's recommended to run the commands from en empty working dir.
+1. **Create directory for your node data** It's recommended to run the commands from empty working dir.
 
 The network configuration, data and docker files will be created inside the target folder ('./target') by default.
 
@@ -150,14 +154,29 @@ mkdir node
 cd node
 ```
 
-Create node custom preset file:
+2. **Add custom preset file for node customisation.** (<em>either you can add custom preset file or skip this step (to enable default values) and go to step 3 </em>)
+
+---
+
+
+ Custom preset file properties:
+
 
 - `friendlyName` - node friendly name (leave empty to use address)
-- `minFeeMultiplier` - minimum fee multiplier of transactions to propagate and include in blocks
-- `maxTrackedNodes` - number of nodes to track in memory
+- `minFeeMultiplier` - (default value = `10` ) minimum fee multiplier of transactions to propagate and include in blocks. 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each block added to the blockchain has a different fee multiplier, set by the node that harvested it. The network also defines the dynamic fee multiplier as the median of the last 60 blocks<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This value approximates the most common fee multiplier that nodes and transaction creators have agreed upon in the most recent blocks, and is used in the calculation of namespace and mosaic rental fees.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If a block did not include any transaction, a value of 100 is used to avoid 0 multipliers.
+
+- `maxTrackedNodes` - (default value = `5000` ) number of nodes to track in memory
+- `enableDelegatedHarvestersAutoDetection` - (default value = `true`) `true` if potential delegated harvesters should be automatically detected. Possible values are `true` and `false`.
+- `delegatePrioritizationPolicy` - (default value = `Importance` ) Prioritization policy used to keep accounts once the maximum number of delegated harvesting accounts is reached. Possible values are `Age` and `Importance`.
+- `maxUnlockedAccounts` - (default value = `10`) Maximum number of unlocked accounts, i.e., the maximum number of delegated harvesting accounts.
+
+---
 
 
-<b>NOTE:</b> friendlyName will be displayed in Veritise explorer node list
+
+> <b>NOTE:</b> Example below is for demonstration purposes only!
 
 ```
 echo "nodes:
@@ -165,23 +184,26 @@ echo "nodes:
     friendlyName: 'REPLACE_NODE_NAME_HERE'
     minFeeMultiplier: 10
     maxTrackedNodes: 5000
-" > name.yml
+" > custom.yml
 ```
+<em> friendlyName will be displayed in Veritise explorer node list </em> 
+> After you have created custom preset file, please check if these values are correct <br> To edit your custom preset of the node, we recommend to use `nano` text editor in the terminal (`nano custom.yml`)
 
 
-To deploy Veritise node you need to execute these commmand:
+3. **Node deployment.** To deploy Veritise node you need to execute these commmand:
 
-<b>IMPORTANT: Before this step, please open 7900 and 3000 ports for communication with the network</b>
+> <b>IMPORTANT: Check if ports `7900` and  `3000` are OPEN. These ports will be used for communication with other nodes</b>
 
 ```
-veritise-node start -p mainnet -a dual --customPreset name.yml -d
+veritise-node start -p mainnet -a dual --customPreset custom.yml -d
 ```
 <b>OR</b>
 ```
-veritise-node comfig -p mainnet -a dual --customPreset name.yml
+veritise-node comfig -p mainnet -a dual --customPreset custom.yml
 veritise-node compose
 veritise-node run -d
 ```
+4. **Check node health**
 
 Please wait until you node will be fully synched with Veritise network. After few minutes check node health:
 
@@ -189,17 +211,6 @@ Please wait until you node will be fully synched with Veritise network. After fe
 curl http://localhost:3000/node/health
 ```
 
-
-<i>If you need to start fresh, you many need to sudo remove the target folder (docker volumes dirs may be created using sudo). Example:
-
-```
-sudo rm -rf ./target
-```
-</i>
-
-```
-sudo rm -rf ./target
-```
 
 # Enabling harvesting
 
@@ -231,6 +242,19 @@ In case the node can't find any node to transmit transaction, you may set an ext
 veritise-node link --url=https://dual1.veritise.superhow.net
 ```
 
+# Remove node
+
+
+<i>If you need to start fresh, you may need to remove the target folder (docker volumes dirs may be created using sudo).
+
+ Example:
+
+```
+cd node
+veritise-node stop
+veritise-node clean
+```
+</i>
 
 <!-- commands -->
 # Command Topics
