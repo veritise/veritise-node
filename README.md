@@ -203,23 +203,22 @@ sudo rm -rf ./target
 
 # Enabling harvesting
 
-
 veritise-node creates peer nodes with remote harvesting enabled by default, but they still need to be registered by announcing the AccountKeyLink and VrfKeyLink transactions to the network.
 
 This can be done by veritise-node too, but it needs to be a step separated from veritise-node start because funds are required to announce transactions.
 
-You can find the main address to fund in the file located at node/target/addresses.yml
+1. **Send tokens to your main account** (You can find the main address to fund in the file located at node/target/addresses.yml)
 
-To decrypt your private keys, you can use this command:
+If you want to export private keys first you have to decrypt by using following command:
 
 ```
 veritise-node decrypt --source target/addresses.yml --destination plain-addresses.yml
 ```
 
-The decrypted file with your provate keys will be located at node/plain-addresses.yml
+The decrypted file with your private keys will be located at node/plain-addresses.yml
 
 
-Once the node is running with veritise-node start and you have funded its account, from a different terminal (but from the same folder), simply type:
+2. **Link your account.** Once the node is running with veritise-node start and you have funded its account, from a different terminal (but from the same folder), simply type:
 
 ```
 veritise-node link
@@ -229,8 +228,9 @@ In case the node can't find any node to transmit transaction, you may set an ext
 
 
 ```
-veritise-node link --url=http://51.116.226.0:3000
+veritise-node link --url=https://dual1.veritise.superhow.net
 ```
+
 
 <!-- commands -->
 # Command Topics
