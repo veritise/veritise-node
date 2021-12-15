@@ -33,4 +33,4 @@ EXAMPLE
   $ veritise-node compose
 ```
 
-_See code: [src/commands/compose.ts](https://github.com/veritise/veritise-node/blob/v1.0.4/src/commands/compose.ts)_
+_See code: [src/commands/compose.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/compose.ts)_
