@@ -145,7 +145,9 @@ npm install -g @veritise/veritise-node
 
 # Usage
 
-1. **Create directory for your node data** It's recommended to run the commands from empty working dir.
+<span style="font-size:larger;"> 1. **Create directory for your node data.** </span>
+
+It's recommended to run the commands from empty working dir.
 
 The network configuration, data and docker files will be created inside the target folder ('./target') by default.
 
@@ -154,7 +156,9 @@ mkdir node
 cd node
 ```
 
-2. **Add custom preset file for node customisation.** (<em>either you can add custom preset file or skip this step (to enable default values) and go to step 3 </em>)
+<span style="font-size:larger;"> 2. **Add custom preset file for node customisation.** </span>
+
+> <em>Either you can add custom preset file or skip this step (to enable default values) and go to step 3 </em>)
 
 ---
 
@@ -190,7 +194,9 @@ echo "nodes:
 > After you have created custom preset file, please check if these values are correct <br> To edit your custom preset of the node, we recommend to use `nano` text editor in the terminal (`nano custom.yml`)
 
 
-3. **Node deployment.** To deploy Veritise node you need to execute these commmand:
+<span style="font-size:larger;"> 3. **Start the node.** </span>
+
+To deploy Veritise node you need to execute these commmand:
 
 > <b>IMPORTANT: Check if ports `7900` and  `3000` are OPEN. These ports will be used for communication with other nodes</b>
 
@@ -203,7 +209,7 @@ veritise-node comfig -p mainnet -a dual --customPreset custom.yml
 veritise-node compose
 veritise-node run -d
 ```
-4. **Check node health**
+<span style="font-size:larger;"> 4. **Check node health** </span>
 
 Please wait until you node will be fully synched with Veritise network. After few minutes check node health:
 
