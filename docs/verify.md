@@ -1,5 +1,5 @@
 `veritise-node verify`
-=========================
+======================
 
 It tests the installed software in the current computer reporting if there is any missing dependency, invalid version, or software related issue.
 
@@ -20,4 +20,4 @@ EXAMPLE
   $ veritise-node verify
 ```
 
-_See code: [src/commands/verify.ts](https://github.com/nemtech/veritise-node/blob/v1.0.8/src/commands/verify.ts)_
+_See code: [src/commands/verify.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/verify.ts)_

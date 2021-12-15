@@ -38,8 +38,8 @@ maxTransactionsPerAggregate: 1000
 maxCosignaturesPerAggregate: 100
 harvestBeneficiaryPercentage: 15
 harvestNetworkPercentage: 10
-rootNamespaceRentalFeePerBlock: 100
-childNamespaceRentalFee: 100000
+rootNamespaceRentalFeePerBlock: 1
+childNamespaceRentalFee: 100
 enableStrictCosignatureCheck: false
 enableBondedAggregateSupport: true
 maxBondedTransactionLifetime: 48h
