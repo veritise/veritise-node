@@ -145,7 +145,7 @@ npm install -g @veritise/veritise-node
 
 # Usage
 
-<span style="font-size:larger;"> 1. **Create directory for your node data.** </span>
+### <span style="font-size:larger;"> 1. **Create directory for your node data.** </span>
 
 It's recommended to run the commands from empty working dir.
 
@@ -156,7 +156,7 @@ mkdir node
 cd node
 ```
 
-<span style="font-size:larger;"> 2. **Add custom preset file for node customisation.** </span>
+### <span style="font-size:larger;"> 2. **Add custom preset file for node customisation.** </span>
 
 > <em>Either you can add custom preset file or skip this step (to enable default values) and go to step 3 </em>)
 
@@ -194,7 +194,7 @@ echo "nodes:
 > After you have created custom preset file, please check if these values are correct <br> To edit your custom preset of the node, we recommend to use `nano` text editor in the terminal (`nano custom.yml`)
 
 
-<span style="font-size:larger;"> 3. **Start the node.** </span>
+### <span style="font-size:larger;"> 3. **Start the node.** </span>
 
 To deploy Veritise node you need to execute these commmand:
 
@@ -209,7 +209,7 @@ veritise-node comfig -p mainnet -a dual --customPreset custom.yml
 veritise-node compose
 veritise-node run -d
 ```
-<span style="font-size:larger;"> 4. **Check node health** </span>
+### <span style="font-size:larger;"> 4. **Check node health** </span>
 
 Please wait until you node will be fully synched with Veritise network. After few minutes check node health:
 
@@ -224,7 +224,9 @@ veritise-node creates peer nodes with remote harvesting enabled by default, but 
 
 This can be done by veritise-node too, but it needs to be a step separated from veritise-node start because funds are required to announce transactions.
 
-1. **Send tokens to your main account** (You can find the main address to fund in the file located at node/target/addresses.yml)
+### 1. **Send tokens to your main account**
+
+You will find the main address to fund in the file located at node/target/addresses.yml)
 
 If you want to export private keys first you have to decrypt by using following command:
 
@@ -235,7 +237,9 @@ veritise-node decrypt --source target/addresses.yml --destination plain-addresse
 The decrypted file with your private keys will be located at node/plain-addresses.yml
 
 
-2. **Link your account.** Once the node is running with veritise-node start and you have funded its account, from a different terminal (but from the same folder), simply type:
+### 2. **Link your account.** 
+
+Once the node is running with veritise-node start and you have funded its account, from a different terminal (but from the same folder), simply type:
 
 ```
 veritise-node link
