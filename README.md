@@ -205,7 +205,7 @@ veritise-node start -p mainnet -a dual --customPreset custom.yml -d
 ```
 <b>OR</b>
 ```
-veritise-node comfig -p mainnet -a dual --customPreset custom.yml
+veritise-node config -p mainnet -a dual --customPreset custom.yml
 veritise-node compose
 veritise-node run -d
 ```
