@@ -221,7 +221,6 @@ maxSubscriptions: 300
 #voting
 votingKeyStartEpoch: 1
 votingKeyEndEpoch: 360
-enableRevoteOnBoot: true
 
 restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer'
 restDeploymentTool: gcr-node
