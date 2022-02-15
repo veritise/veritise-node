@@ -21,4 +21,4 @@ EXAMPLE
   $ veritise-node stop
 ```
 
-_See code: [src/commands/stop.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/stop.ts)_
+_See code: [src/commands/stop.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/stop.ts)_

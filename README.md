@@ -12,7 +12,7 @@ Tool that allows you creating, configuring and running Veritise&#39;s complete n
 * [Step-by-step](#step-by-step)
 * [Usage](#usage)
 * [Enabling harvesting](#enabling-harvesting)
-* [Remove Node](#remove-node)
+* [Remove node](#remove-node)
 * [Command Topics](#command-topics)
 <!-- tocstop -->
 

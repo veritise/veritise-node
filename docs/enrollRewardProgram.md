@@ -54,4 +54,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node enrollRewardProgram --url http://external-rest:3000
 ```
 
-_See code: [src/commands/enrollRewardProgram.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/enrollRewardProgram.ts)_
+_See code: [src/commands/enrollRewardProgram.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/enrollRewardProgram.ts)_

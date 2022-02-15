@@ -49,4 +49,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node link --unlink --useKnownRestGateways
 ```
 
-_See code: [src/commands/link.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/link.ts)_
+_See code: [src/commands/link.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/link.ts)_

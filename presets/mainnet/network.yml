@@ -1,30 +1,34 @@
-initialCurrencyAtomicUnits: 300000000000000
+initialCurrencyAtomicUnits: 301417791900000
 maxMosaicAtomicUnits: 1000000000000000
-totalChainImportance: 300000000000000
+totalChainImportance: 301417791900000
 minHarvesterBalance: 10000000000
 maxHarvesterBalance: 100000000000000
 minVoterBalance: 100000000000
-nemesisGenerationHashSeed: 9D5307FE6CC482B2E0538F7E4897132973DFE2D4819AF9140F60C21DF2B18550
-nemesisSignerPublicKey: 530FBAAD896659E37BB7F0A3EC8D89BBDC0B09AA747B176A6D4CB68916E56DDE
-harvestNetworkFeeSinkAddress: NAI7TSVXW64I5F2UIONYRBON2KZMT34WFQNMLHI
-mosaicRentalFeeSinkAddress: NAVNBFSQPCHT5TCWFPB6MWGQCA3NHPQBL5Q62SQ
-namespaceRentalFeeSinkAddress: NCG7VPRMPVLBQLVLFDAWYLTUWUWZ2OY7TPYUOPI
+nemesisGenerationHashSeed: 6F3BB068920937930E86215F83AA952C5D3342522C980DD0FF3BDAC02988E4EE
+nemesisSignerPublicKey: F67F37DA8635D8958EDE1B63EE2E49E45F61443AC86825C908BEC5699779C92C
+harvestNetworkFeeSinkAddress: NDMDLTTEAVTRKO3VTW77AGYJF6HCL2Z7EDF75QQ
+harvestNetworkFeeSinkAddressV1: NDMDLTTEAVTRKO3VTW77AGYJF6HCL2Z7EDF75QQ
+mosaicRentalFeeSinkAddress: NADXMMJHDO6DYKUHEKXUN65LYTWDVML3N3A6M6Y
+namespaceRentalFeeSinkAddress: NCRAXZW4OLVGXREJ5T2RHJR4RDXFQJ37ESZWFJI
 assemblies: 'api, dual, peer'
 baseNamespace: veritise
 currencyName: currency
 harvestingName: currency
 batchVerificationRandomSource: /dev/urandom
-currencyMosaicId: 5ABC5FC919933DC6
+currencyMosaicId: 4782D8157E9B12D8
 harvestBeneficiaryPercentage: 15
-harvestingMosaicId: 5ABC5FC919933DC6
-epochAdjustment: 1620136098s
+harvestingMosaicId: 4782D8157E9B12D8
+epochAdjustment: 1644905554s
+maxVotingKeyLifetime: 26280
+# 2 years
+votingKeyDesiredLifetime: 2920
+votingKeyDesiredFutureLifetime: 60
 enableRevoteOnBoot: false
 networkType: 104
 importanceGrouping: 720
 votingSetGrouping: 1440
 minVotingKeyLifetime: 112
-maxVotingKeyLifetime: 360
-votingKeyDesiredLifetime: 360
+maxVotingKeyLifetime: 26280
 votingKeyDesiredFutureLifetime: 60
 lastKnownNetworkEpoch: 181
 stepDuration: 5m
@@ -36,123 +40,90 @@ blockGenerationTargetTime: 15s
 totalVotingBalanceCalculationFix: 528000
 throttlingBurst: 80
 throttlingRate: 60
+reservedRootNamespaceNames: 'veritise, vts, user, account, org, com, biz, net, edu, mil, gov, inf'
 nonVotingUnfinalizedBlocksDuration: 10m
 votingUnfinalizedBlocksDuration: 0m
 restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer, cmc'
 knownRestGateways:
-    - 'https://dual1.veritise.superhow.net:443'
-    - 'https://dual2.veritise.superhow.net:443'
-    - 'https://dual3.veritise.superhow.net:443'
+    - 'https://dual1-mainnet.veritise.superhow.net:443'
+    - 'https://dual2-mainnet.veritise.superhow.net:443'
+    - 'https://dual3-mainnet.veritise.superhow.net:443'
 
 trustedHosts:
 inflation:
-    starting-at-height-1: 100000
-    starting-at-height-40430: 100000
-    starting-at-height-161280: 150000
-    starting-at-height-282240: 250000
-    starting-at-height-403200: 500000
-    starting-at-height-524160: 1600000
-    starting-at-height-645120: 1600000
-    starting-at-height-766080: 1600000
-    starting-at-height-887040: 1600000
-    starting-at-height-1008000: 1600000
-    starting-at-height-1128960: 1600000
-    starting-at-height-1249920: 1600000
-    starting-at-height-1370880: 1600000
-    starting-at-height-1491840: 1600000
-    starting-at-height-1612800: 1600000
-    starting-at-height-1733760: 1600000
-    starting-at-height-1854720: 1600000
-    starting-at-height-1975680: 1600000
-    starting-at-height-2096640: 1600000
-    starting-at-height-2217600: 1600000
-    starting-at-height-2338560: 1600000
-    starting-at-height-2459520: 1600000
-    starting-at-height-2580480: 1600000
-    starting-at-height-2701440: 1600000
-    starting-at-height-2822400: 1600000
-    starting-at-height-2943360: 1600000
-    starting-at-height-3064320: 1600000
-    starting-at-height-3185280: 1600000
-    starting-at-height-3306240: 1600000
-    starting-at-height-3427200: 1600000
-    starting-at-height-3548160: 1600000
-    starting-at-height-3669120: 1600000
-    starting-at-height-3790080: 1600000
-    starting-at-height-3911040: 1600000
-    starting-at-height-4032000: 1600000
-    starting-at-height-4193280: 1600000
+    starting-at-height-1: 0
+    starting-at-height-200: 1600000
     starting-at-height-213010560: 0
 knownPeers:
     api-node:
-        - publicKey: c3855583554ccfa8d859652108013786ab1580436348b86c001978c74ec8b7df
+        - publicKey: 99665a5a83c1ba658e5ccdf5e64291100ca5a2fc37fd41f7f15114a542e35c6a
           endpoint:
-              host: dual1.veritise.superhow.net
+              host: dual1-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual1
+              name: veritise-mainnet-dual1
               roles: Api,Peer,Voting
-        - publicKey: 5cd56dfeed07d92d3157a574115818193cbd1397431fdc21a1f6d5c20686b149
+        - publicKey: ba3ea74690a44165a0fff16f15e25168925e6c236bf13f3d58fd592f065f849d
           endpoint:
-              host: dual2.veritise.superhow.net
+              host: dual2-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual2
+              name: veritise-mainnet-dual2
               roles: Api,Peer,Voting
-        - publicKey: c23e43df7269fd9613a22027692fa875b44b5ee0579a892e962475d31a3c5dbe
+        - publicKey: 3d7db958e022d94982e2d4ae404ccbdb148af1d2d522905da7ab0ccf3b6e19dc
           endpoint:
-              host: dual3.veritise.superhow.net
+              host: dual3-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual3
+              name: veritise-mainnet-dual3
               roles: Api,Peer,Voting
     peer-node:
-        - publicKey: 75173f1cfd23ec4bbf85c83ea1cdb53028f229bdd84ca9197e6743cf70d588d8
+        - publicKey: 190c0f2384ba860f1121d2dac1f64c7211b3ef21ab88e56a5e9436c76e6e2045
           endpoint:
-              host: 51.116.117.9
+              host: peer1-mainnet.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-peer1
               roles: Peer,Voting
-        - publicKey: bd352d36c9703cfefdb1fe5172a89aea5bb73aa7274b775db367e31fbd90b6fa
+        - publicKey: e5d81ae281faee3f95dee3483c69192108b62e954ed19566363a9efd56d5156b
           endpoint:
-              host: 51.116.117.80
+              host: peer2-mainnet.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-peer2
               roles: Peer,Voting
-        - publicKey: a69d0c3716c3901d7948bef2b9eef51b31ce68d9e5bdd50743c3633ea3a4a319
+        - publicKey: fbf3cc14c8a42725ba4e5ed3f2eb19b3223af6f6495c75633b5e9e657f65bebd
           endpoint:
-              host: 51.116.117.7
+              host: peer3-mainnet.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-peer3
               roles: Peer,Voting
-        - publicKey: d9c0546d3db43b914664ef105b64e89e3c902435925450f70a9f9ad9b970eda8
+        - publicKey: df37fa597b091ad82f38a85c53021d72371ebed1070f0a6e9473ba89a845a5ee
           endpoint:
-              host: 20.52.242.29
+              host: peer4-mainnet.veritise.superhow.net
               port: 7900
           metadata:
               name: veritise-peer4
               roles: Peer,Voting
-        - publicKey: c3855583554ccfa8d859652108013786ab1580436348b86c001978c74ec8b7df
+        - publicKey: 99665a5a83c1ba658e5ccdf5e64291100ca5a2fc37fd41f7f15114a542e35c6a
           endpoint:
-              host: dual1.veritise.superhow.net
+              host: dual1-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual1
+              name: veritise-mainnet-dual1
               roles: Api,Peer,Voting
-        - publicKey: 5cd56dfeed07d92d3157a574115818193cbd1397431fdc21a1f6d5c20686b149
+        - publicKey: ba3ea74690a44165a0fff16f15e25168925e6c236bf13f3d58fd592f065f849d
           endpoint:
-              host: dual2.veritise.superhow.net
+              host: dual2-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual2
+              name: veritise-mainnet-dual2
               roles: Api,Peer,Voting
-        - publicKey: c23e43df7269fd9613a22027692fa875b44b5ee0579a892e962475d31a3c5dbe
+        - publicKey: 3d7db958e022d94982e2d4ae404ccbdb148af1d2d522905da7ab0ccf3b6e19dc
           endpoint:
-              host: dual3.veritise.superhow.net
+              host: dual3-mainnet.veritise.superhow.net
               port: 7900
           metadata:
-              name: veritise-dual3
+              name: veritise-mainnet-dual3
               roles: Api,Peer,Voting

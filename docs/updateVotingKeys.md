@@ -44,4 +44,4 @@ EXAMPLE
   $ veritise-node updateVotingKeys
 ```
 
-_See code: [src/commands/updateVotingKeys.ts](https://github.com/veritise/veritise-node/blob/v1.0.9/src/commands/updateVotingKeys.ts)_
+_See code: [src/commands/updateVotingKeys.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/updateVotingKeys.ts)_
