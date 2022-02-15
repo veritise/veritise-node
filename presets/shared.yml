@@ -223,7 +223,7 @@ votingKeyStartEpoch: 1
 votingKeyEndEpoch: 360
 
 restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer'
-restDeploymentTool: gcr-node
+restDeploymentTool: veritise-node
 restUncirculatingAccountPublicKeys: ''
 restProtocol: HTTP
 restSSLPath: '/symbol-workdir'
