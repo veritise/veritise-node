@@ -1,5 +1,4 @@
 nodeUseRemoteAccount: true
-privateKeySecurityMode: ENCRYPT
 nodePort: 7900
 enableCacheDatabaseStorage: true
 enableVerifiableState: true
@@ -31,7 +30,7 @@ minFeeMultiplier: 10
 maxTimeBehindPullTransactionsStart: 5m
 epochAdjustment: 1620136098s 
 nodeEqualityStrategy: host
-maxVotingKeyLifetime: 360
+maxVotingKeyLifetime: 26280
 minVotingKeyLifetime: 112
 mosaicRentalFee: 40
 votingSetGrouping: 1440
@@ -67,12 +66,11 @@ maxNameSize: 128
 maxChildNamespaces: 500
 maxNamespaceDepth: 3
 batchVerificationRandomSource:
-	symbolServerImage: symbolplatform/symbol-server:gcc-10-1.0.3.1
+symbolServerImage: symbolplatform/symbol-server:gcc-10-1.0.3.1
 symbolRestImage: symbolplatform/symbol-rest:2.4.0
-symbolExplorerImage: symbolplatform/symbol-explorer:1.1.0-alpha
-symbolWalletImage: symbolplatform/symbol-desktop-wallet:1.0.1
-symbolFaucetImage: symbolplatform/symbol-faucet:1.0.1-alpha
-mongoImage: mongo:4.4.3-bionic
+symbolExplorerImage: symbolplatform/symbol-explorer:1.1.1-alpha-202110290945
+symbolFaucetImage: symbolplatform/symbol-faucet:1.0.1-alpha-202110131930
+ongoImage: mongo:4.4.3-bionic
 httpsPortalImage: steveltn/https-portal:1.19
 mongoComposeRunParam: --wiredTigerCacheSizeGB 2
 logLevel: 'Info'
@@ -87,10 +85,12 @@ dataDirectory: ./data
 votingKeysDirectory: ./votingkeys
 enableDelegatedHarvestersAutoDetection: true
 catapultAppFolder: /usr/catapult
-rewardProgramAgentPort: 7881
 enableRevoteOnBoot: true
 totalVotingBalanceCalculationFix: 1
 treasuryReissuance: 1
+caCertificateExpirationInDays: 7300 # 20 years
+nodeCertificateExpirationInDays: 5075 # 1.02 years
+certificateExpirationWarningInDays: 30 # certificates are allowed to be renewed 30 before expiring
 
 # config database
 databaseName: catapult
@@ -112,7 +112,7 @@ prevoteBlocksMultiple: 4
 nonVotingUnfinalizedBlocksDuration: 8m
 votingUnfinalizedBlocksDuration: 0m
 voting: true
-
+treasuryReissuanceEpoch: 0
 # config messages:
 subscriberPort: 7902
 messagingListenInterface: 0.0.0.0
@@ -158,7 +158,7 @@ blockElementTraceInterval: 1
 transactionDisruptorSlotCount: 8192
 transactionDisruptorMaxMemorySize: 20MB
 transactionElementTraceInterval: 10
-enableDispatcherAbortWhenFull: true
+enableDispatcherAbortWhenFull: false
 enableDispatcherInputAuditing: false
 maxTrackedNodes: 5'000
 enableAutoHarvesting: true
@@ -168,9 +168,9 @@ delegatePrioritizationPolicy: Importance
 dockerComposeVersion: '2.4'
 dockerComposeServiceRestart: 'on-failure:2'
 dockerComposeDebugMode: false
-minPartnerNodeVersion: 1.0.1.0
+minPartnerNodeVersion: 1.0.2.0
 maxPartnerNodeVersion: 1.0.255.255
-serverVersion: 1.0.2.0
+serverVersion:
 outgoing_connections_maxConnections: 10
 outgoing_connections_maxConnectionAge: 200
 outgoing_connections_maxConnectionBanAge: 20
@@ -217,11 +217,6 @@ maxConnectionAttempts: 15
 baseRetryDelay: 750
 connectionPoolSize: 10
 maxSubscriptions: 300
-
-#voting
-votingKeyStartEpoch: 1
-votingKeyEndEpoch: 360
-
 restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer'
 restDeploymentTool: veritise-node
 restUncirculatingAccountPublicKeys: ''

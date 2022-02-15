@@ -1,4 +1,4 @@
-Symbol Bootstrap Version: CURRENT_VERSION
+Veritise node Version: CURRENT_VERSION
 
 config-database.properties
 ==========================

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 
 import { Command } from '@oclif/command';
-import { BootstrapUtils } from '../service';
-import { CommandUtils } from '../service/CommandUtils';
+import { LoggerFactory, System } from '../logger';
+import { CommandUtils, FileSystemService } from '../service';
 
 export default class Clean extends Command {
     static description = 'It removes the target folder deleting the generated configuration and data';
@@ -26,11 +26,13 @@ export default class Clean extends Command {
     static flags = {
         help: CommandUtils.helpFlag,
         target: CommandUtils.targetFlag,
+        logger: CommandUtils.getLoggerFlag(...System),
     };
 
     public async run(): Promise<void> {
         const { flags } = this.parse(Clean);
-        BootstrapUtils.showBanner();
-        BootstrapUtils.deleteFolder(flags.target);
+        CommandUtils.showBanner();
+        const logger = LoggerFactory.getLogger(flags.logger);
+        new FileSystemService(logger).deleteFolder(flags.target);
     }
 }

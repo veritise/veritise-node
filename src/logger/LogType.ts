@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,13 @@
  */
 
 export enum LogType {
-    Audit = 'AUDIT_LOG',
-    System = 'SYSTEM_LOG',
+    // Console log with line info
+    Console = 'Console',
+    // File log with line info
+    File = 'File',
+    // Silent, no log at all.
+    Silent = 'Silent',
 }
+
+//Shortcut
+export const System = [LogType.Console, LogType.File];

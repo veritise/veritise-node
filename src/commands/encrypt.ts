@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,8 @@
 import { Command, flags } from '@oclif/command';
 import { existsSync } from 'fs';
 import { dirname } from 'path';
-import { LogType } from '../logger';
-import Logger from '../logger/Logger';
-import LoggerFactory from '../logger/LoggerFactory';
-import { BootstrapUtils, KnownError } from '../service';
-import { CommandUtils } from '../service/CommandUtils';
-import { CryptoUtils } from '../service/CryptoUtils';
-const logger: Logger = LoggerFactory.getLogger(LogType.System);
+import { LoggerFactory, LogType } from '../logger';
+import { CommandUtils, CryptoUtils, FileSystemService, KnownError, YamlUtils } from '../service';
 
 export default class Encrypt extends Command {
     static description = `It encrypts a yml file using the provided password. The source files would be a custom preset file, a preset.yml file or an addresses.yml.
@@ -59,6 +54,7 @@ $ veritise-node start --password 1234 --preset testnet --assembly dual --customP
         password: CommandUtils.getPasswordFlag(
             `The password to use to encrypt the source file into the destination file. Bootstrap prompts for a password by default, can be provided in the command line (--password=XXXX) or disabled in the command line (--noPassword).`,
         ),
+        logger: CommandUtils.getLoggerFlag(LogType.Console),
     };
 
     public async run(): Promise<void> {
@@ -70,18 +66,20 @@ $ veritise-node start --password 1234 --preset testnet --assembly dual --customP
         if (existsSync(flags.destination)) {
             throw new KnownError(`Destination file ${flags.destination} already exists!`);
         }
+        const logger = LoggerFactory.getLogger(flags.logger);
         const password = await CommandUtils.resolvePassword(
+            logger,
             flags.password,
             false,
             `Enter the password used to decrypt the source file into the destination file. Keep this password in a secure place!`,
             false,
         );
-        const data = await BootstrapUtils.loadYaml(flags.source, false);
+        const data = await YamlUtils.loadYaml(flags.source, false);
         if (CryptoUtils.encryptedCount(data) > 0) {
             throw new KnownError(`Source file ${flags.source} is already encrypted. If you want to decrypt it use the decrypt command.`);
         }
-        await BootstrapUtils.mkdir(dirname(flags.destination));
-        await BootstrapUtils.writeYaml(flags.destination, data, password);
+        await new FileSystemService(logger).mkdir(dirname(flags.destination));
+        await YamlUtils.writeYaml(flags.destination, data, password);
         logger.info(`Encrypted file ${flags.destination} has been created!`);
     }
 }
