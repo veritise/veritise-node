@@ -21,7 +21,6 @@ harvestingMosaicId: 4782D8157E9B12D8
 epochAdjustment: 1644905554s
 # 2 years
 votingKeyDesiredLifetime: 2920
-votingKeyDesiredFutureLifetime: 60
 enableRevoteOnBoot: false
 networkType: 104
 importanceGrouping: 720
