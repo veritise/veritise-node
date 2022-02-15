@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-export enum NodeType {
-    PEER_NODE = 'peer-node',
-    API_NODE = 'api-node',
+/**
+ * Exception with special, not critical, error handling.
+ */
+export class KnownError extends Error {
+    public readonly known = true;
 }

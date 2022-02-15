@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 
 import { Command } from '@oclif/command';
-import { BootstrapService, BootstrapUtils } from '../service';
-import { CommandUtils } from '../service/CommandUtils';
+import { LoggerFactory, System } from '../logger';
+import { BootstrapService, CommandUtils } from '../service';
 
 export default class ResetData extends Command {
     static description = 'It removes the data keeping the generated configuration, certificates, keys and block 1.';
@@ -26,11 +26,13 @@ export default class ResetData extends Command {
     static flags = {
         help: CommandUtils.helpFlag,
         target: CommandUtils.targetFlag,
+        logger: CommandUtils.getLoggerFlag(...System),
     };
 
     public async run(): Promise<void> {
         const { flags } = this.parse(ResetData);
-        BootstrapUtils.showBanner();
-        await new BootstrapService(this.config.root).resetData(flags);
+        CommandUtils.showBanner();
+        const logger = LoggerFactory.getLogger(flags.logger);
+        await new BootstrapService(logger).resetData(flags);
     }
 }

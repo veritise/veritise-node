@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 
 import { Command, flags } from '@oclif/command';
-import { BootstrapService, BootstrapUtils, ComposeService } from '../service';
-import { CommandUtils } from '../service/CommandUtils';
+import { LoggerFactory, System } from '../logger';
+import { BootstrapService, CommandUtils, ComposeService, Constants } from '../service';
 
 export default class Compose extends Command {
     static description = 'It generates the `docker-compose.yml` file from the configured network.';
@@ -32,22 +32,28 @@ export default class Compose extends Command {
             description: 'It regenerates the docker compose and utility files from the <target>/docker folder',
             default: ComposeService.defaultParams.upgrade,
         }),
+        offline: CommandUtils.offlineFlag,
         user: flags.string({
             char: 'u',
-            description: `User used to run the services in the docker-compose.yml file. "${BootstrapUtils.CURRENT_USER}" means the current user.`,
+            description: `User used to run the services in the docker-compose.yml file. "${Constants.CURRENT_USER}" means the current user.`,
             default: 'current',
         }),
+        logger: CommandUtils.getLoggerFlag(...System),
     };
 
     public async run(): Promise<void> {
         const { flags } = this.parse(Compose);
-        BootstrapUtils.showBanner();
+        CommandUtils.showBanner();
+
+        const logger = LoggerFactory.getLogger(flags.logger);
         flags.password = await CommandUtils.resolvePassword(
+            logger,
             flags.password,
             flags.noPassword,
             CommandUtils.passwordPromptDefaultMessage,
             true,
         );
-        await new BootstrapService(this.config.root).compose(flags);
+        const workingDir = Constants.defaultWorkingDir;
+        await new BootstrapService(logger).compose({ ...flags, workingDir });
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,8 @@
  */
 
 import { Command } from '@oclif/command';
-import { LogType } from '../logger';
-import Logger from '../logger/Logger';
-import LoggerFactory from '../logger/LoggerFactory';
-import { BootstrapUtils, CommandUtils, VerifyService } from '../service';
-const logger: Logger = LoggerFactory.getLogger(LogType.System);
+import { LoggerFactory, System } from '../logger';
+import { CommandUtils, VerifyService } from '../service';
 
 export default class Verify extends Command {
     static description =
@@ -28,18 +25,16 @@ export default class Verify extends Command {
 
     static flags = {
         help: CommandUtils.helpFlag,
+        logger: CommandUtils.getLoggerFlag(...System),
     };
 
     public async run(): Promise<void> {
-        BootstrapUtils.showBanner();
-        const report = await new VerifyService(this.config.root).createReport();
-        logger.info(`OS: ${report.platform}`);
-        report.lines.forEach((line) => {
-            if (line.recommendation) {
-                logger.warn(`${line.header}  - Warning! - ${line.message} - ${line.recommendation}`);
-            } else {
-                logger.info(`${line.header} - OK! - ${line.message}`);
-            }
-        });
+        CommandUtils.showBanner();
+        const { flags } = this.parse(Verify);
+        const logger = LoggerFactory.getLogger(flags.logger);
+        const service = new VerifyService(logger);
+        const report = await service.createReport();
+        service.logReport(report);
+        service.validateReport(report);
     }
 }

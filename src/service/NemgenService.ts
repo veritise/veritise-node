@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,22 @@
 
 import { promises } from 'fs';
 import { join } from 'path';
-import Logger from '../logger/Logger';
-import LoggerFactory from '../logger/LoggerFactory';
-import { LogType } from '../logger/LogType';
+import { Logger } from '../logger';
 import { ConfigPreset } from '../model';
-import { BootstrapUtils } from './BootstrapUtils';
 import { ConfigParams } from './ConfigService';
+import { Constants } from './Constants';
+import { FileSystemService } from './FileSystemService';
+import { RuntimeService } from './RuntimeService';
 
 type NemgenParams = ConfigParams;
 
-const logger: Logger = LoggerFactory.getLogger(LogType.System);
-
 export class NemgenService {
-    constructor(private readonly root: string, protected readonly params: NemgenParams) {}
+    private readonly runtimeService: RuntimeService;
+    private readonly fileSystemService: FileSystemService;
+    constructor(private readonly logger: Logger, protected readonly params: NemgenParams) {
+        this.runtimeService = new RuntimeService(logger);
+        this.fileSystemService = new FileSystemService(logger);
+    }
 
     public async run(presetData: ConfigPreset): Promise<void> {
         const networkIdentifier = presetData.networkIdentifier;
@@ -39,39 +42,51 @@ export class NemgenService {
             throw new Error('Nodes must be defined in preset when running nemgen');
         }
 
-        const nemesisWorkingDir = BootstrapUtils.getTargetNemesisFolder(target, true);
-        const nemesisSeedFolder = join(nemesisWorkingDir, `seed`, `${networkIdentifier}`, `0000`);
-        await BootstrapUtils.mkdir(nemesisSeedFolder);
-        await promises.copyFile(join(this.root, `config`, `hashes.dat`), join(nemesisSeedFolder, `hashes.dat`));
+        const nemesisWorkingDir = this.fileSystemService.getTargetNemesisFolder(target, true);
+        const nemesisSeedFolder = join(nemesisWorkingDir, `seed`, networkIdentifier, `0000`);
+        await this.fileSystemService.mkdir(nemesisSeedFolder);
+        await promises.copyFile(join(Constants.ROOT_FOLDER, `config`, `hashes.dat`), join(nemesisSeedFolder, `hashes.dat`));
         const name = presetData.nodes[0].name;
-        const serverConfigWorkingDir = BootstrapUtils.getTargetNodesFolder(target, true, name, 'server-config');
+        const serverConfigWorkingDir = this.fileSystemService.getTargetNodesFolder(target, true, name, 'server-config');
 
-        BootstrapUtils.validateFolder(nemesisWorkingDir);
-        BootstrapUtils.validateFolder(serverConfigWorkingDir);
+        this.fileSystemService.validateFolder(nemesisWorkingDir);
+        this.fileSystemService.validateFolder(serverConfigWorkingDir);
 
         const cmd = [
             `${presetData.catapultAppFolder}/bin/catapult.tools.nemgen`,
             '--resources=/server-config',
             '--nemesisProperties=./server-config/block-properties-file.properties',
+            '--useTemporaryCacheDatabase',
         ];
 
         const binds = [`${serverConfigWorkingDir}:/server-config`, `${nemesisWorkingDir}:/nemesis`];
 
-        const userId = await BootstrapUtils.resolveDockerUserFromParam(this.params.user);
-        const { stdout, stderr } = await BootstrapUtils.runImageUsingExec({
-            catapultAppFolder: presetData.catapultAppFolder,
-            image: symbolServerImage,
-            userId: userId,
-            workdir: '/nemesis',
-            cmds: cmd,
-            binds: binds,
-        });
-
-        if (stdout.indexOf('<error>') > -1) {
-            logger.info(stdout);
-            logger.error(stderr);
+        const userId = await this.runtimeService.resolveDockerUserFromParam(this.params.user);
+        let stdout: string;
+        let stderr: string;
+        let message: string | undefined;
+        let failed: boolean;
+        try {
+            ({ stdout, stderr } = await this.runtimeService.runImageUsingExec({
+                catapultAppFolder: presetData.catapultAppFolder,
+                image: symbolServerImage,
+                userId: userId,
+                workdir: '/nemesis',
+                cmds: cmd,
+                binds: binds,
+            }));
+            failed = stdout.indexOf('<error>') > -1;
+        } catch (e) {
+            failed = true;
+            ({ stdout, stderr, message } = e as any);
+        }
+        if (failed) {
+            if (message) this.logger.error(message);
+            if (stdout) this.logger.info(stdout);
+            if (stderr) this.logger.error(stderr);
             throw new Error('Nemgen failed. Check the logs!');
         }
-        logger.info('Nemgen executed!!!!');
+        this.fileSystemService.deleteFolder(join(nemesisWorkingDir, `seed`, networkIdentifier));
+        this.logger.info('Nemgen executed!!!!');
     }
 }

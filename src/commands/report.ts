@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  */
 
 import { Command } from '@oclif/command';
-import { BootstrapService, BootstrapUtils } from '../service';
-import { CommandUtils } from '../service/CommandUtils';
+import { LoggerFactory, System } from '../logger';
+import { BootstrapService, CommandUtils, Constants } from '../service';
 
-export default class Clean extends Command {
+export default class Report extends Command {
     static description = 'it generates reStructuredText (.rst) reports describing the configuration of each node.';
 
     static examples = [`$ veritise-node report`];
@@ -26,11 +26,14 @@ export default class Clean extends Command {
     static flags = {
         help: CommandUtils.helpFlag,
         target: CommandUtils.targetFlag,
+        logger: CommandUtils.getLoggerFlag(...System),
     };
 
     public async run(): Promise<void> {
-        const { flags } = this.parse(Clean);
-        BootstrapUtils.showBanner();
-        await new BootstrapService(this.config.root).report(flags);
+        const { flags } = this.parse(Report);
+        CommandUtils.showBanner();
+        const logger = LoggerFactory.getLogger(flags.logger);
+        const workingDir = Constants.defaultWorkingDir;
+        await new BootstrapService(logger).report({ ...flags, workingDir });
     }
 }

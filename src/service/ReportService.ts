@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,14 @@
 import { promises as fsPromises, readFileSync } from 'fs';
 import * as _ from 'lodash';
 import { join } from 'path';
-import Logger from '../logger/Logger';
-import LoggerFactory from '../logger/LoggerFactory';
-import { LogType } from '../logger/LogType';
+import { Logger } from '../logger';
 import { ConfigPreset } from '../model';
-import { BootstrapUtils } from './BootstrapUtils';
 import { ConfigLoader } from './ConfigLoader';
+import { Constants } from './Constants';
+import { FileSystemService } from './FileSystemService';
+import { YamlUtils } from './YamlUtils';
 
-export type ReportParams = { target: string };
-
-const logger: Logger = LoggerFactory.getLogger(LogType.System);
+export type ReportParams = { target: string; workingDir: string; version?: string };
 
 interface ReportLine {
     property: string;
@@ -53,11 +51,14 @@ interface ReportNode {
 
 export class ReportService {
     public static defaultParams: ReportParams = {
-        target: BootstrapUtils.defaultTargetFolder,
+        target: Constants.defaultTargetFolder,
+        workingDir: Constants.defaultWorkingDir,
     };
     private readonly configLoader: ConfigLoader;
-    constructor(private readonly root: string, protected readonly params: ReportParams) {
-        this.configLoader = new ConfigLoader();
+    private readonly fileSystemService: FileSystemService;
+    constructor(private readonly logger: Logger, protected readonly params: ReportParams) {
+        this.configLoader = new ConfigLoader(logger);
+        this.fileSystemService = new FileSystemService(logger);
     }
 
     private createReportFromFile(resourceContent: string, descriptions: any): ReportSection[] {
@@ -70,7 +71,7 @@ export class ReportService {
             .filter((l) => l && l.indexOf('#') != 0);
 
         lines.forEach((l) => {
-            const isHeader = /\[(.*?)\]/.exec(l);
+            const isHeader = /\[([\w\s\.:]+)]/.exec(l);
             if (isHeader && isHeader.length && isHeader[1]) {
                 sections.push({
                     header: isHeader[1],
@@ -83,7 +84,11 @@ export class ReportService {
                     const descriptor = descriptions[propertyName];
                     const hidden = (descriptor && descriptor.hidden) || false;
                     const value = isProperty[2].trim();
-                    sections[sections.length - 1].lines.push({
+                    const section = sections[sections.length - 1];
+                    if (!section) {
+                        throw new Error(`Invalid line '${l}'. No section could be found!`);
+                    }
+                    section.lines.push({
                         property: propertyName,
                         value: hidden ? value.replace(/./g, '*') : value,
                         hidden: hidden,
@@ -100,26 +105,24 @@ export class ReportService {
     private async createReportsPerNode(presetData: ConfigPreset): Promise<ReportNode[]> {
         const workingDir = process.cwd();
         const target = join(workingDir, this.params.target);
-        const descriptions = await BootstrapUtils.loadYaml(join(this.root, 'presets', 'descriptions.yml'), false);
+        const descriptions = await YamlUtils.loadYaml(join(Constants.ROOT_FOLDER, 'presets', 'descriptions.yml'), false);
         const promises: Promise<ReportNode>[] = (presetData.nodes || []).map(async (n) => {
-            const resourcesFolder = join(BootstrapUtils.getTargetNodesFolder(target, false, n.name), 'server-config', 'resources');
+            const resourcesFolder = join(this.fileSystemService.getTargetNodesFolder(target, false, n.name), 'server-config', 'resources');
             const files = await fsPromises.readdir(resourcesFolder);
             const reportFiles = files
                 .filter((fileName) => fileName.indexOf('.properties') > -1)
                 .map((fileName) => {
                     const resourceContent = readFileSync(join(resourcesFolder, fileName), 'utf-8');
                     const sections = this.createReportFromFile(resourceContent, descriptions);
-                    const reportFile: ReportFile = {
-                        fileName: fileName,
+                    return {
+                        fileName,
                         sections,
                     };
-                    return reportFile;
                 });
-            const reportNode: ReportNode = {
+            return {
                 name: n.name,
                 files: reportFiles,
             };
-            return reportNode;
         });
 
         return Promise.all(promises);
@@ -133,13 +136,15 @@ export class ReportService {
         const presetData = passedPresetData ?? this.configLoader.loadExistingPresetData(this.params.target, false);
 
         const reportFolder = join(this.params.target, 'reports');
-        BootstrapUtils.deleteFolder(reportFolder);
+        this.fileSystemService.deleteFolder(reportFolder);
         const reportNodes: ReportNode[] = await this.createReportsPerNode(presetData);
 
         const missingProperties = _.flatMap(reportNodes, (n) =>
             _.flatMap(n.files, (f) =>
-                _.flatMap(f.sections, (s) =>
-                    s.lines.filter((s) => !s.type && !s.description && !s.property.startsWith('starting-at-height')).map((s) => s.property),
+                _.flatMap(f.sections, (section) =>
+                    section.lines
+                        .filter((line) => !line.type && !line.description && !line.property.startsWith('starting-at-height'))
+                        .map((line) => line.property),
                 ),
             ),
         );
@@ -152,34 +157,39 @@ export class ReportService {
                     description: '',
                 }),
             );
-            logger.debug('Missing yaml properties: ' + BootstrapUtils.toYaml(missingDescriptionsObject));
+            this.logger.debug('Missing yaml properties: ' + YamlUtils.toYaml(missingDescriptionsObject));
         }
 
         // const missingDescriptions = reportNodes.map(node -> node.files)
 
-        await BootstrapUtils.mkdir(reportFolder);
+        await this.fileSystemService.mkdir(reportFolder);
+        const version = this.getVersion(presetData);
         const promises = _.flatMap(reportNodes, (n) => {
-            return [this.toRstReport(reportFolder, n), this.toCsvReport(reportFolder, n)];
+            return [this.toRstReport(reportFolder, version, n), this.toCsvReport(reportFolder, version, n)];
         });
         return Promise.all(promises);
     }
 
-    private async toRstReport(reportFolder: string, n: ReportNode) {
+    private getVersion(passedPresetData: ConfigPreset | undefined): string {
+        return this.params.version || passedPresetData?.reportBootstrapVersion || Constants.VERSION;
+    }
+
+    private async toRstReport(reportFolder: string, version: string, n: ReportNode) {
         const reportFile = join(reportFolder, `${n.name}-config.rst`);
         const reportContent =
-            `Symbol Bootstrap Version: ${BootstrapUtils.VERSION}\n` +
+            `Veritise node Version: ${version}\n` +
             n.files
                 .map((fileReport) => {
                     const hasDescriptionSection = fileReport.sections.find((s) => s.lines.find((l) => l.description || l.type));
                     const header = hasDescriptionSection ? '"Property", "Value", "Type", "Description"' : '"Property", "Value"';
                     const csvBody = fileReport.sections
                         .map((s) => {
-                            const hasDescriptionSection = s.lines.find((l) => l.description || l.type);
+                            const hasDescriptionValueSection = s.lines.find((l) => l.description || l.type);
                             return (
-                                (hasDescriptionSection ? `**${s.header}**; ; ;\n` : `**${s.header}**;\n`) +
+                                (hasDescriptionValueSection ? `**${s.header}**; ; ;\n` : `**${s.header}**;\n`) +
                                 s.lines
                                     .map((l) => {
-                                        if (hasDescriptionSection)
+                                        if (hasDescriptionValueSection)
                                             return `${l.property}; ${l.value}; ${l.type}; ${l.description}`.trim() + '\n';
                                         else {
                                             return `${l.property}; ${l.value}`.trim() + '\n';
@@ -201,15 +211,15 @@ ${csvBody.trim().replace(/^/gm, '    ')}`;
                 })
                 .join('\n');
 
-        await BootstrapUtils.writeTextFile(reportFile, reportContent);
-        logger.info(`Report file ${reportFile} created`);
+        await YamlUtils.writeTextFile(reportFile, reportContent);
+        this.logger.info(`Report file ${reportFile} created`);
         return reportFile;
     }
 
-    private async toCsvReport(reportFolder: string, n: ReportNode) {
+    private async toCsvReport(reportFolder: string, version: string | undefined, n: ReportNode) {
         const reportFile = join(reportFolder, `${n.name}-config.csv`);
         const reportContent =
-            `veritise-node-version; ${BootstrapUtils.VERSION}\n\n` +
+            `veritise-node-version; ${version}\n\n` +
             n.files
                 .map((fileReport) => {
                     const csvBody = fileReport.sections
@@ -235,8 +245,8 @@ ${csvBody.trim()}`;
                 })
                 .join('\n\n\n');
 
-        await BootstrapUtils.writeTextFile(reportFile, reportContent);
-        logger.info(`Report file ${reportFile} created`);
+        await YamlUtils.writeTextFile(reportFile, reportContent);
+        this.logger.info(`Report file ${reportFile} created`);
         return reportFile;
     }
 }

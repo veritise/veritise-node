@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 NEM
+ * Copyright 2022 Fernando Boucquez
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import * as net from 'net';
 
 export class PortService {
     public static async isReachable(port: number, host: string, timeout = 1000): Promise<boolean> {
-        const promise = new Promise((resolve, reject) => {
+        const promise = new Promise<void>((resolve, reject) => {
             const socket = new net.Socket();
 
             const onError = () => {
