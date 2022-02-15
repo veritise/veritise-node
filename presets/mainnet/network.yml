@@ -41,7 +41,7 @@ throttlingRate: 60
 reservedRootNamespaceNames: 'veritise, vts, user, account, org, com, biz, net, edu, mil, gov, inf'
 nonVotingUnfinalizedBlocksDuration: 10m
 votingUnfinalizedBlocksDuration: 0m
-restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer, cmc'
+restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer'
 explorerUrl: https://explorer.veritise.com
 statisticsServiceUrl: https://stats.veritise.superhow.net
 knownRestGateways: []

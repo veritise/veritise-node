@@ -42,7 +42,7 @@ throttlingBurst: 80
 throttlingRate: 60
 nonVotingUnfinalizedBlocksDuration: 10m
 votingUnfinalizedBlocksDuration: 0m
-restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer, cmc'
+restExtensions: 'accountLink, aggregate, lockHash, lockSecret, mosaic, metadata, multisig, namespace, receipts, restrictions, transfer'
 knownRestGateways:
     - 'https://dual1-testnet.veritise.superhow.net:443'
     - 'https://dual2-testnet.veritise.superhow.net:443'
