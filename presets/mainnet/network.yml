@@ -19,7 +19,6 @@ currencyMosaicId: 4782D8157E9B12D8
 harvestBeneficiaryPercentage: 15
 harvestingMosaicId: 4782D8157E9B12D8
 epochAdjustment: 1644905554s
-maxVotingKeyLifetime: 26280
 # 2 years
 votingKeyDesiredLifetime: 2920
 votingKeyDesiredFutureLifetime: 60
