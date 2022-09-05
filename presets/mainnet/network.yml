@@ -1,24 +1,24 @@
-initialCurrencyAtomicUnits: 301417791900000
+initialCurrencyAtomicUnits: 303251860220000
 maxMosaicAtomicUnits: 1000000000000000
-totalChainImportance: 301417791900000
+totalChainImportance: 303251860220000
 minHarvesterBalance: 10000000000
 maxHarvesterBalance: 100000000000000
 minVoterBalance: 100000000000
-nemesisGenerationHashSeed: 6F3BB068920937930E86215F83AA952C5D3342522C980DD0FF3BDAC02988E4EE
-nemesisSignerPublicKey: F67F37DA8635D8958EDE1B63EE2E49E45F61443AC86825C908BEC5699779C92C
-harvestNetworkFeeSinkAddress: NDMDLTTEAVTRKO3VTW77AGYJF6HCL2Z7EDF75QQ
-harvestNetworkFeeSinkAddressV1: NDMDLTTEAVTRKO3VTW77AGYJF6HCL2Z7EDF75QQ
-mosaicRentalFeeSinkAddress: NADXMMJHDO6DYKUHEKXUN65LYTWDVML3N3A6M6Y
-namespaceRentalFeeSinkAddress: NCRAXZW4OLVGXREJ5T2RHJR4RDXFQJ37ESZWFJI
+nemesisGenerationHashSeed: D12C8B5FA198D053115DDBBF369C1BEBEA89CD3E103494A04248FA4131D50B3E
+nemesisSignerPublicKey: 664A28F1F9A2411DEE29A97AAC6C44488F30163B6C66DD6E6F1FD705023744A5
+harvestNetworkFeeSinkAddress: NBI6WOKSSLLNEMAK3BX2HRGT7G6NDLSAD5OFGVY
+harvestNetworkFeeSinkAddressV1: NBI6WOKSSLLNEMAK3BX2HRGT7G6NDLSAD5OFGVY
+mosaicRentalFeeSinkAddress: NBZO75FJ74IGN7GZ4JQVZWA6GT4PP4YXKCLZFHI
+namespaceRentalFeeSinkAddress: NDMD4JIC4W66YHYGZUB6GDSLUBUUXCRZTHFTYWA
 assemblies: 'api, dual, peer'
 baseNamespace: veritise
 currencyName: currency
 harvestingName: currency
 batchVerificationRandomSource: /dev/urandom
-currencyMosaicId: 4782D8157E9B12D8
+currencyMosaicId: 248D444BD835C98F
 harvestBeneficiaryPercentage: 15
-harvestingMosaicId: 4782D8157E9B12D8
-epochAdjustment: 1644905554s
+harvestingMosaicId: 248D444BD835C98F
+epochAdjustment: 1662366600s
 # 2 years
 votingKeyDesiredLifetime: 2920
 votingKeyDesiredFutureLifetime: 60
@@ -28,7 +28,7 @@ importanceGrouping: 720
 votingSetGrouping: 1440
 minVotingKeyLifetime: 112
 maxVotingKeyLifetime: 26280
-lastKnownNetworkEpoch: 181
+lastKnownNetworkEpoch: 1
 stepDuration: 5m
 maxSecretLockDuration: 30d
 maxNamespaceDuration: 3650d
