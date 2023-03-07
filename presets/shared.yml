@@ -25,14 +25,14 @@ maxAccountRestrictionValues: 512
 maxMosaicRestrictionValues: 20
 maxMessageSize: 4096
 reservedRootNamespaceNames: 'veritise, vts'
-defaultDynamicFeeMultiplier: 1000000
+defaultDynamicFeeMultiplier: 10
 minFeeMultiplier: 10
 maxTimeBehindPullTransactionsStart: 5m
 epochAdjustment: 1620136098s 
 nodeEqualityStrategy: host
 maxVotingKeyLifetime: 26280
 minVotingKeyLifetime: 112
-mosaicRentalFee: 40
+mosaicRentalFee: 4000000
 votingSetGrouping: 1440
 maxVotingKeysPerAccount: 3
 autoUpdateVotingKeys: true
@@ -40,8 +40,8 @@ maxTransactionsPerAggregate: 1000
 maxCosignaturesPerAggregate: 100
 harvestBeneficiaryPercentage: 15
 harvestNetworkPercentage: 10
-rootNamespaceRentalFeePerBlock: 1
-childNamespaceRentalFee: 100
+rootNamespaceRentalFeePerBlock: 60
+childNamespaceRentalFee: 4000000
 enableStrictCosignatureCheck: false
 enableBondedAggregateSupport: true
 maxBondedTransactionLifetime: 48h
