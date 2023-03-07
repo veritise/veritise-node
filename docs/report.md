@@ -24,4 +24,4 @@ EXAMPLE
   $ veritise-node report
 ```
 
-_See code: [src/commands/report.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/report.ts)_
+_See code: [src/commands/report.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/report.ts)_

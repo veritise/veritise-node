@@ -24,4 +24,4 @@ EXAMPLE
   $ veritise-node resetData
 ```
 
-_See code: [src/commands/resetData.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/resetData.ts)_
+_See code: [src/commands/resetData.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/resetData.ts)_

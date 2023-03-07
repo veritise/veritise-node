@@ -24,4 +24,4 @@ EXAMPLE
   $ veritise-node clean
 ```
 
-_See code: [src/commands/clean.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/clean.ts)_
+_See code: [src/commands/clean.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/clean.ts)_

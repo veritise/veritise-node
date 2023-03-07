@@ -57,4 +57,4 @@ EXAMPLE
   $ veritise-node run
 ```
 
-_See code: [src/commands/run.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/run.ts)_

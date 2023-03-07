@@ -49,4 +49,4 @@ EXAMPLES
   encrypted-custom-preset.yml
 ```
 
-_See code: [src/commands/encrypt.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/encrypt.ts)_
+_See code: [src/commands/encrypt.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/encrypt.ts)_

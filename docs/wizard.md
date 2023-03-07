@@ -39,4 +39,4 @@ EXAMPLE
   $ veritise-node wizard
 ```
 
-_See code: [src/commands/wizard.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/wizard.ts)_
+_See code: [src/commands/wizard.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/wizard.ts)_

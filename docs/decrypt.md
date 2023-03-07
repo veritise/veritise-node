@@ -58,4 +58,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node decrypt --source target/addresses.yml --destination plain-addresses.yml
 ```
 
-_See code: [src/commands/decrypt.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/decrypt.ts)_
+_See code: [src/commands/decrypt.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/decrypt.ts)_

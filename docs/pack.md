@@ -66,4 +66,4 @@ EXAMPLES
   $ echo "$MY_ENV_VAR_PASSWORD" | veritise-node pack -c custom-preset.yml
 ```
 
-_See code: [src/commands/pack.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/pack.ts)_
+_See code: [src/commands/pack.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/pack.ts)_

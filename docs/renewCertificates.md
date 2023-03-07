@@ -58,4 +58,4 @@ EXAMPLE
   $ veritise-node renewCertificates
 ```
 
-_See code: [src/commands/renewCertificates.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/renewCertificates.ts)_
+_See code: [src/commands/renewCertificates.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/renewCertificates.ts)_

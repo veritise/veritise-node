@@ -39,4 +39,4 @@ EXAMPLE
   $ veritise-node healthCheck
 ```
 
-_See code: [src/commands/healthCheck.ts](https://github.com/veritise/veritise-node/blob/v1.1.9/src/commands/healthCheck.ts)_
+_See code: [src/commands/healthCheck.ts](https://github.com/veritise/veritise-node/blob/v1.1.6/src/commands/healthCheck.ts)_
